@@ -1,0 +1,623 @@
+                                     Table "public.nsi_airports_rus"
+  Column   |          Type          | Collation | Nullable |                   Default                    
+-----------+------------------------+-----------+----------+----------------------------------------------
+ id        | integer                |           | not null | nextval('nsi_airports_rus_id_seq'::regclass)
+ code_iata | character varying(255) |           | not null | 
+ name      | character varying(255) |           | not null | 
+ city      | character varying(255) |           | not null | 
+ key       | character varying(255) |           | not null | 
+Indexes:
+    "nsi_airports_rus_pkey" PRIMARY KEY, btree (id)
+
+                                      Table "public.nsi_ati_cities"
+   Column   |          Type          | Collation | Nullable |                  Default                   
+------------+------------------------+-----------+----------+--------------------------------------------
+ id         | integer                |           | not null | nextval('nsi_ati_cities_id_seq'::regclass)
+ city_id    | integer                |           |          | 
+ region_id  | integer                |           |          | 
+ country_id | integer                |           |          | 
+ city       | character varying(255) |           | not null | 
+ region     | character varying(255) |           | not null | 
+ country    | character varying(255) |           | not null | 
+ key        | integer                |           |          | 
+Indexes:
+    "nsi_ati_cities_pkey" PRIMARY KEY, btree (id)
+
+                                       Table "public.nsi_ati_customs_map"
+    Column    |          Type          | Collation | Nullable |                     Default                     
+--------------+------------------------+-----------+----------+-------------------------------------------------
+ id           | integer                |           | not null | nextval('nsi_ati_customs_map_id_seq'::regclass)
+ country_code | character varying(2)   |           | not null | 
+ customs_code | character varying(8)   |           | not null | 
+ customs_city | character varying(255) |           | not null | 
+ ati_city     | character varying(255) |           | not null | 
+ ati_city_id  | integer                |           |          | 
+ key          | character varying(8)   |           | not null | 
+Indexes:
+    "nsi_ati_customs_map_pkey" PRIMARY KEY, btree (id)
+
+                                   Table "public.nsi_car_type"
+ Column |         Type          | Collation | Nullable |                 Default                  
+--------+-----------------------+-----------+----------+------------------------------------------
+ id     | integer               |           | not null | nextval('nsi_car_type_id_seq'::regclass)
+ code   | text                  |           |          | 
+ name   | character varying(20) |           | not null | 
+ key    | text                  |           |          | 
+Indexes:
+    "nsi_car_type_pkey" PRIMARY KEY, btree (id)
+
+                                      Table "public.nsi_color"
+   Column    |         Type          | Collation | Nullable |                Default                
+-------------+-----------------------+-----------+----------+---------------------------------------
+ id          | integer               |           | not null | nextval('nsi_color_id_seq'::regclass)
+ code        | character varying(3)  |           | not null | 
+ description | character varying(20) |           | not null | 
+ key         | character varying(3)  |           | not null | 
+Indexes:
+    "nsi_color_pkey" PRIMARY KEY, btree (id)
+
+                                        Table "public.nsi_countries"
+     Column     |          Type          | Collation | Nullable |                  Default                  
+----------------+------------------------+-----------+----------+-------------------------------------------
+ id             | integer                |           | not null | nextval('nsi_countries_id_seq'::regclass)
+ abc2           | character varying(2)   |           | not null | 
+ abc3           | character varying(3)   |           | not null | 
+ code           | character varying(3)   |           | not null | 
+ short_name     | character varying(40)  |           | not null | 
+ name           | character varying(250) |           | not null | 
+ name_eng       | character varying(100) |           | not null | 
+ classification | text                   |           |          | 
+ key            | character varying(3)   |           | not null | 
+Indexes:
+    "nsi_countries_pkey" PRIMARY KEY, btree (id)
+
+                                      Table "public.nsi_currency_code"
+   Column   |          Type          | Collation | Nullable |                    Default                    
+------------+------------------------+-----------+----------+-----------------------------------------------
+ id         | integer                |           | not null | nextval('nsi_currency_code_id_seq'::regclass)
+ code       | character varying(3)   |           | not null | 
+ abc3       | character varying(3)   |           | not null | 
+ short_name | character varying(17)  |           | not null | 
+ name       | character varying(255) |           | not null | 
+ key        | character varying(3)   |           | not null | 
+Indexes:
+    "nsi_currency_code_pkey" PRIMARY KEY, btree (id)
+
+                                        Table "public.nsi_customs"
+    Column    |           Type           | Collation | Nullable |                 Default                 
+--------------+--------------------------+-----------+----------+-----------------------------------------
+ id           | integer                  |           | not null | nextval('nsi_customs_id_seq'::regclass)
+ country_code | character varying(2)     |           | not null | 
+ code         | character varying(8)     |           | not null | 
+ name         | character varying(50)    |           | not null | 
+ city         | character varying(30)    |           | not null | 
+ address      | character varying(255)   |           | not null | 
+ phone        | character varying(20)    |           | not null | 
+ oldcode      | character varying(8)     |           | not null | 
+ code5        | character varying(5)     |           | not null | 
+ from_date    | timestamp with time zone |           |          | 
+ key          | character varying(8)     |           | not null | 
+Indexes:
+    "nsi_customs_pkey" PRIMARY KEY, btree (id)
+
+                                         Table "public.nsi_customs_ced"
+     Column     |           Type           | Collation | Nullable |                   Default                   
+----------------+--------------------------+-----------+----------+---------------------------------------------
+ id             | integer                  |           | not null | nextval('nsi_customs_ced_id_seq'::regclass)
+ code           | character varying(8)     |           | not null | 
+ name           | character varying(50)    |           | not null | 
+ code_ced       | character varying(255)   |           | not null | 
+ ced_name       | character varying(50)    |           | not null | 
+ transport_kind | text                     |           |          | 
+ notes          | character varying(255)   |           | not null | 
+ order          | character varying(255)   |           | not null | 
+ order_date     | timestamp with time zone |           |          | 
+ from_date      | timestamp with time zone |           |          | 
+ to_date        | timestamp with time zone |           |          | 
+ key            | text                     |           |          | 
+Indexes:
+    "nsi_customs_ced_pkey" PRIMARY KEY, btree (id)
+
+                                          Table "public.nsi_customs_hierarchy"
+       Column        |          Type          | Collation | Nullable |                      Default                      
+---------------------+------------------------+-----------+----------+---------------------------------------------------
+ id                  | integer                |           | not null | nextval('nsi_customs_hierarchy_id_seq'::regclass)
+ code                | character varying(8)   |           | not null | 
+ name                | character varying(50)  |           | not null | 
+ customs_code        | character varying(255) |           | not null | 
+ customs_name        | character varying(50)  |           | not null | 
+ customs_office_code | character varying(255) |           | not null | 
+ customs_office_name | character varying(50)  |           | not null | 
+ key                 | character varying(8)   |           | not null | 
+Indexes:
+    "nsi_customs_hierarchy_pkey" PRIMARY KEY, btree (id)
+
+                                   Table "public.nsi_customs_payments_kind"
+ Column |         Type         | Collation | Nullable |                        Default                        
+--------+----------------------+-----------+----------+-------------------------------------------------------
+ id     | integer              |           | not null | nextval('nsi_customs_payments_kind_id_seq'::regclass)
+ code   | character varying(4) |           | not null | 
+ name   | text                 |           |          | 
+ key    | character varying(4) |           | not null | 
+Indexes:
+    "nsi_customs_payments_kind_pkey" PRIMARY KEY, btree (id)
+
+                                    Table "public.nsi_customs_procedures_kind"
+ Column |          Type          | Collation | Nullable |                         Default                         
+--------+------------------------+-----------+----------+---------------------------------------------------------
+ id     | integer                |           | not null | nextval('nsi_customs_procedures_kind_id_seq'::regclass)
+ code   | character varying(2)   |           | not null | 
+ name   | character varying(255) |           | not null | 
+ key    | character varying(2)   |           | not null | 
+Indexes:
+    "nsi_customs_procedures_kind_pkey" PRIMARY KEY, btree (id)
+
+                                        Table "public.nsi_customs_region"
+    Column    |           Type           | Collation | Nullable |                    Default                     
+--------------+--------------------------+-----------+----------+------------------------------------------------
+ id           | integer                  |           | not null | nextval('nsi_customs_region_id_seq'::regclass)
+ code         | character varying(8)     |           | not null | 
+ name         | character varying(50)    |           | not null | 
+ region       | text                     |           |          | 
+ region_okato | character varying(255)   |           | not null | 
+ order        | character varying(255)   |           | not null | 
+ order_date   | timestamp with time zone |           |          | 
+ from_date    | timestamp with time zone |           |          | 
+ to_date      | timestamp with time zone |           |          | 
+ key          | text                     |           |          | 
+Indexes:
+    "nsi_customs_region_pkey" PRIMARY KEY, btree (id)
+
+                                      Table "public.nsi_customs_value_determination_kind"
+   Column    |          Type          | Collation | Nullable |                             Default                              
+-------------+------------------------+-----------+----------+------------------------------------------------------------------
+ id          | integer                |           | not null | nextval('nsi_customs_value_determination_kind_id_seq'::regclass)
+ code        | character varying(1)   |           | not null | 
+ description | character varying(255) |           | not null | 
+ key         | character varying(1)   |           | not null | 
+Indexes:
+    "nsi_customs_value_determination_kind_pkey" PRIMARY KEY, btree (id)
+
+                                    Table "public.nsi_deal_feature"
+ Column |          Type          | Collation | Nullable |                   Default                    
+--------+------------------------+-----------+----------+----------------------------------------------
+ id     | integer                |           | not null | nextval('nsi_deal_feature_id_seq'::regclass)
+ code   | character varying(2)   |           | not null | 
+ name   | character varying(255) |           | not null | 
+ key    | character varying(2)   |           | not null | 
+Indexes:
+    "nsi_deal_feature_pkey" PRIMARY KEY, btree (id)
+
+                                    Table "public.nsi_deal_nature"
+ Column |          Type          | Collation | Nullable |                   Default                   
+--------+------------------------+-----------+----------+---------------------------------------------
+ id     | integer                |           | not null | nextval('nsi_deal_nature_id_seq'::regclass)
+ code   | character varying(3)   |           | not null | 
+ name   | character varying(250) |           | not null | 
+ key    | character varying(3)   |           | not null | 
+Indexes:
+    "nsi_deal_nature_pkey" PRIMARY KEY, btree (id)
+
+                                    Table "public.nsi_delivery_terms"
+ Column |          Type          | Collation | Nullable |                    Default                     
+--------+------------------------+-----------+----------+------------------------------------------------
+ id     | integer                |           | not null | nextval('nsi_delivery_terms_id_seq'::regclass)
+ code_d | text                   |           |          | 
+ code   | character varying(3)   |           | not null | 
+ name   | character varying(100) |           | not null | 
+ key    | character varying(3)   |           | not null | 
+Indexes:
+    "nsi_delivery_terms_pkey" PRIMARY KEY, btree (id)
+
+                                     Table "public.nsi_edi_container_type"
+  Column  |          Type          | Collation | Nullable |                      Default                       
+----------+------------------------+-----------+----------+----------------------------------------------------
+ id       | integer                |           | not null | nextval('nsi_edi_container_type_id_seq'::regclass)
+ code     | character varying(255) |           | not null | 
+ code_old | character varying(255) |           | not null | 
+ length   | character varying(255) |           | not null | 
+ width    | character varying(255) |           | not null | 
+ name     | character varying(255) |           | not null | 
+Indexes:
+    "nsi_edi_container_type_pkey" PRIMARY KEY, btree (id)
+
+                                      Table "public.nsi_edi_wagon_type"
+   Column    |          Type          | Collation | Nullable |                    Default                     
+-------------+------------------------+-----------+----------+------------------------------------------------
+ id          | integer                |           | not null | nextval('nsi_edi_wagon_type_id_seq'::regclass)
+ code        | character varying(2)   |           | not null | 
+ description | character varying(255) |           | not null | 
+ abbr        | character varying(10)  |           | not null | 
+ key         | character varying(2)   |           | not null | 
+Indexes:
+    "nsi_edi_wagon_type_pkey" PRIMARY KEY, btree (id)
+
+                                    Table "public.nsi_edi_weight_definition_mode"
+ Column |          Type          | Collation | Nullable |                          Default                           
+--------+------------------------+-----------+----------+------------------------------------------------------------
+ id     | integer                |           | not null | nextval('nsi_edi_weight_definition_mode_id_seq'::regclass)
+ code   | character varying(2)   |           | not null | 
+ name   | character varying(255) |           | not null | 
+ key    | character varying(2)   |           | not null | 
+Indexes:
+    "nsi_edi_weight_definition_mode_pkey" PRIMARY KEY, btree (id)
+
+                                    Table "public.nsi_ensure_payment_code"
+ Column |          Type          | Collation | Nullable |                       Default                       
+--------+------------------------+-----------+----------+-----------------------------------------------------
+ id     | integer                |           | not null | nextval('nsi_ensure_payment_code_id_seq'::regclass)
+ code   | character varying(2)   |           | not null | 
+ name   | character varying(255) |           | not null | 
+ key    | character varying(2)   |           | not null | 
+Indexes:
+    "nsi_ensure_payment_code_pkey" PRIMARY KEY, btree (id)
+
+                                    Table "public.nsi_forms_of_payment"
+ Column |          Type          | Collation | Nullable |                     Default                      
+--------+------------------------+-----------+----------+--------------------------------------------------
+ id     | integer                |           | not null | nextval('nsi_forms_of_payment_id_seq'::regclass)
+ code   | character varying(2)   |           | not null | 
+ name   | character varying(255) |           | not null | 
+ key    | character varying(2)   |           | not null | 
+Indexes:
+    "nsi_forms_of_payment_pkey" PRIMARY KEY, btree (id)
+
+                                    Table "public.nsi_hazardous_cargo_code_imo"
+ Column |          Type          | Collation | Nullable |                         Default                          
+--------+------------------------+-----------+----------+----------------------------------------------------------
+ id     | integer                |           | not null | nextval('nsi_hazardous_cargo_code_imo_id_seq'::regclass)
+ code   | character varying(3)   |           | not null | 
+ name   | character varying(255) |           | not null | 
+ key    | character varying(3)   |           | not null | 
+Indexes:
+    "nsi_hazardous_cargo_code_imo_pkey" PRIMARY KEY, btree (id)
+
+                                          Table "public.nsi_hazardous_cargo_code_un"
+       Column        |          Type          | Collation | Nullable |                         Default                         
+---------------------+------------------------+-----------+----------+---------------------------------------------------------
+ id                  | integer                |           | not null | nextval('nsi_hazardous_cargo_code_un_id_seq'::regclass)
+ code                | character varying(4)   |           | not null | 
+ name                | character varying(255) |           | not null | 
+ class_name          | character varying(3)   |           | not null | 
+ clarrification_code | character varying(10)  |           | not null | 
+Indexes:
+    "nsi_hazardous_cargo_code_un_pkey" PRIMARY KEY, btree (id)
+
+                                           Table "public.nsi_intellectual"
+       Column       |           Type           | Collation | Nullable |                   Default                    
+--------------------+--------------------------+-----------+----------+----------------------------------------------
+ id                 | integer                  |           | not null | nextval('nsi_intellectual_id_seq'::regclass)
+ code               | character varying(25)    |           | not null | 
+ description        | character varying(50)    |           | not null | 
+ inn                | character varying(12)    |           | not null | 
+ kpp                | character varying(9)     |           | not null | 
+ company_name       | character varying(254)   |           | not null | 
+ company_name_en    | character varying(254)   |           | not null | 
+ company_address    | character varying(254)   |           | not null | 
+ company_address_en | character varying(254)   |           | not null | 
+ note               | character varying(100)   |           | not null | 
+ order_number       | character varying(10)    |           | not null | 
+ order_date         | timestamp with time zone |           |          | 
+ full_description   | text                     |           |          | 
+ full_description_2 | text                     |           |          | 
+ key                | text                     |           |          | 
+Indexes:
+    "nsi_intellectual_pkey" PRIMARY KEY, btree (id)
+
+                                        Table "public.nsi_intellectual_documents"
+    Column     |           Type           | Collation | Nullable |                        Default                         
+---------------+--------------------------+-----------+----------+--------------------------------------------------------
+ id            | integer                  |           | not null | nextval('nsi_intellectual_documents_id_seq'::regclass)
+ code          | character varying(25)    |           | not null | 
+ document      | character varying(25)    |           | not null | 
+ document_date | timestamp with time zone |           |          | 
+Indexes:
+    "nsi_intellectual_documents_pkey" PRIMARY KEY, btree (id)
+
+                                         Table "public.nsi_intellectual_trade_marks"
+      Column       |          Type          | Collation | Nullable |                         Default                          
+-------------------+------------------------+-----------+----------+----------------------------------------------------------
+ id                | integer                |           | not null | nextval('nsi_intellectual_trade_marks_id_seq'::regclass)
+ code              | character varying(255) |           | not null | 
+ description       | character varying(255) |           | not null | 
+ picture_file_name | text                   |           |          | 
+ key               | text                   |           |          | 
+Indexes:
+    "nsi_intellectual_trade_marks_pkey" PRIMARY KEY, btree (id)
+
+                                   Table "public.nsi_mnt"
+ Column |         Type         | Collation | Nullable |               Default               
+--------+----------------------+-----------+----------+-------------------------------------
+ id     | integer              |           | not null | nextval('nsi_mnt_id_seq'::regclass)
+ code   | character varying(2) |           | not null | 
+ name   | text                 |           |          | 
+ key    | character varying(2) |           | not null | 
+Indexes:
+    "nsi_mnt_pkey" PRIMARY KEY, btree (id)
+
+                                   Table "public.nsi_movement_of_goods_features"
+ Column |         Type         | Collation | Nullable |                          Default                           
+--------+----------------------+-----------+----------+------------------------------------------------------------
+ id     | integer              |           | not null | nextval('nsi_movement_of_goods_features_id_seq'::regclass)
+ code   | character varying(3) |           | not null | 
+ name   | text                 |           |          | 
+ key    | character varying(3) |           | not null | 
+Indexes:
+    "nsi_movement_of_goods_features_pkey" PRIMARY KEY, btree (id)
+
+                                     Table "public.nsi_package"
+  Column  |          Type          | Collation | Nullable |                 Default                 
+----------+------------------------+-----------+----------+-----------------------------------------
+ id       | integer                |           | not null | nextval('nsi_package_id_seq'::regclass)
+ code     | character varying(2)   |           | not null | 
+ name     | character varying(255) |           | not null | 
+ name_eng | character varying(255) |           | not null | 
+ key      | character varying(2)   |           | not null | 
+Indexes:
+    "nsi_package_pkey" PRIMARY KEY, btree (id)
+
+                                    Table "public.nsi_package_type"
+ Column |          Type          | Collation | Nullable |                   Default                    
+--------+------------------------+-----------+----------+----------------------------------------------
+ id     | integer                |           | not null | nextval('nsi_package_type_id_seq'::regclass)
+ code   | character varying(1)   |           | not null | 
+ name   | character varying(100) |           | not null | 
+ key    | character varying(1)   |           | not null | 
+Indexes:
+    "nsi_package_type_pkey" PRIMARY KEY, btree (id)
+
+                                    Table "public.nsi_payment_code"
+ Column |          Type          | Collation | Nullable |                   Default                    
+--------+------------------------+-----------+----------+----------------------------------------------
+ id     | integer                |           | not null | nextval('nsi_payment_code_id_seq'::regclass)
+ code   | character varying(2)   |           | not null | 
+ name   | character varying(255) |           | not null | 
+ key    | character varying(2)   |           | not null | 
+Indexes:
+    "nsi_payment_code_pkey" PRIMARY KEY, btree (id)
+
+                                      Table "public.nsi_payment_terms"
+   Column    |         Type          | Collation | Nullable |                    Default                    
+-------------+-----------------------+-----------+----------+-----------------------------------------------
+ id          | integer               |           | not null | nextval('nsi_payment_terms_id_seq'::regclass)
+ code        | character varying(2)  |           | not null | 
+ description | character varying(50) |           | not null | 
+ month_count | character varying(4)  |           | not null | 
+ key         | character varying(2)  |           | not null | 
+Indexes:
+    "nsi_payment_terms_pkey" PRIMARY KEY, btree (id)
+
+                                      Table "public.nsi_payment_way_code"
+   Column    |          Type          | Collation | Nullable |                     Default                      
+-------------+------------------------+-----------+----------+--------------------------------------------------
+ id          | integer                |           | not null | nextval('nsi_payment_way_code_id_seq'::regclass)
+ country_ab2 | character varying(2)   |           | not null | 
+ code        | character varying(2)   |           | not null | 
+ name        | character varying(255) |           | not null | 
+ key         | text                   |           |          | 
+Indexes:
+    "nsi_payment_way_code_pkey" PRIMARY KEY, btree (id)
+
+                                      Table "public.nsi_personal_document_kind"
+   Column    |          Type          | Collation | Nullable |                        Default                         
+-------------+------------------------+-----------+----------+--------------------------------------------------------
+ id          | integer                |           | not null | nextval('nsi_personal_document_kind_id_seq'::regclass)
+ code        | character varying(2)   |           | not null | 
+ name        | character varying(75)  |           | not null | 
+ abbr        | character varying(6)   |           | not null | 
+ series_mask | character varying(11)  |           | not null | 
+ number_mask | character varying(25)  |           | not null | 
+ comment     | character varying(120) |           | not null | 
+ key         | character varying(2)   |           | not null | 
+Indexes:
+    "nsi_personal_document_kind_pkey" PRIMARY KEY, btree (id)
+
+                                         Table "public.nsi_personal_document_kind_155"
+      Column      |          Type          | Collation | Nullable |                          Default                           
+------------------+------------------------+-----------+----------+------------------------------------------------------------
+ id               | integer                |           | not null | nextval('nsi_personal_document_kind_155_id_seq'::regclass)
+ country_code     | character varying(2)   |           | not null | 
+ doc_type_code    | character varying(2)   |           | not null | 
+ code             | character varying(7)   |           | not null | 
+ name             | character varying(255) |           | not null | 
+ citizenship_mark | character varying(10)  |           | not null | 
+ key              | character varying(7)   |           | not null | 
+Indexes:
+    "nsi_personal_document_kind_155_pkey" PRIMARY KEY, btree (id)
+
+                                     Table "public.nsi_pi_usage"
+   Column    |         Type         | Collation | Nullable |                 Default                  
+-------------+----------------------+-----------+----------+------------------------------------------
+ id          | integer              |           | not null | nextval('nsi_pi_usage_id_seq'::regclass)
+ code        | character varying(2) |           | not null | 
+ description | text                 |           |          | 
+ key         | character varying(2) |           | not null | 
+Indexes:
+    "nsi_pi_usage_pkey" PRIMARY KEY, btree (id)
+
+                                               Table "public.nsi_preferences_kind"
+           Column           |           Type           | Collation | Nullable |                     Default                      
+----------------------------+--------------------------+-----------+----------+--------------------------------------------------
+ id                         | integer                  |           | not null | nextval('nsi_preferences_kind_id_seq'::regclass)
+ code                       | character varying(2)     |           | not null | 
+ apply_to                   | character varying(1)     |           | not null | 
+ name                       | text                     |           |          | 
+ use_in_by                  | double precision         |           |          | 
+ use_in_kz                  | double precision         |           |          | 
+ use_in_rf                  | double precision         |           |          | 
+ use_in_am                  | double precision         |           |          | 
+ key                        | text                     |           |          | 
+ procedures_mask            | character varying(255)   |           | not null | 
+ procedures_mask_order      | character varying(255)   |           | not null | 
+ procedures_mask_order_date | timestamp with time zone |           |          | 
+Indexes:
+    "nsi_preferences_kind_pkey" PRIMARY KEY, btree (id)
+
+                                          Table "public.nsi_rw_countries"
+       Column        |          Type          | Collation | Nullable |                   Default                    
+---------------------+------------------------+-----------+----------+----------------------------------------------
+ id                  | integer                |           | not null | nextval('nsi_rw_countries_id_seq'::regclass)
+ rw_country_code     | character varying(255) |           | not null | 
+ name                | character varying(50)  |           | not null | 
+ abbr                | character varying(10)  |           | not null | 
+ country_code        | character varying(255) |           | not null | 
+ administration_name | character varying(255) |           | not null | 
+ abc2                | character varying(2)   |           | not null | 
+ abc3                | character varying(3)   |           | not null | 
+ key                 | character varying(255) |           | not null | 
+Indexes:
+    "nsi_rw_countries_pkey" PRIMARY KEY, btree (id)
+
+                                     Table "public.nsi_rw_roads"
+  Column   |          Type          | Collation | Nullable |                 Default                  
+-----------+------------------------+-----------+----------+------------------------------------------
+ id        | integer                |           | not null | nextval('nsi_rw_roads_id_seq'::regclass)
+ road_code | character varying(255) |           | not null | 
+ name      | character varying(50)  |           | not null | 
+ abbr      | character varying(10)  |           | not null | 
+ key       | character varying(255) |           | not null | 
+Indexes:
+    "nsi_rw_roads_pkey" PRIMARY KEY, btree (id)
+
+                                       Table "public.nsi_rw_stations"
+    Column    |          Type          | Collation | Nullable |                   Default                   
+--------------+------------------------+-----------+----------+---------------------------------------------
+ id           | integer                |           | not null | nextval('nsi_rw_stations_id_seq'::regclass)
+ code5        | character varying(10)  |           | not null | 
+ code         | character varying(255) |           | not null | 
+ name         | character varying(100) |           | not null | 
+ name_eng     | character varying(255) |           | not null | 
+ abbr         | character varying(255) |           | not null | 
+ road_code    | character varying(3)   |           | not null | 
+ country_code | character varying(255) |           | not null | 
+ key          | text                   |           |          | 
+Indexes:
+    "nsi_rw_stations_pkey" PRIMARY KEY, btree (id)
+
+                                       Table "public.nsi_rw_stations_customs"
+    Column    |          Type          | Collation | Nullable |                       Default                       
+--------------+------------------------+-----------+----------+-----------------------------------------------------
+ id           | integer                |           | not null | nextval('nsi_rw_stations_customs_id_seq'::regclass)
+ code5        | character varying(10)  |           | not null | 
+ code         | character varying(255) |           | not null | 
+ name         | character varying(100) |           | not null | 
+ customs_code | character varying(8)   |           | not null | 
+ curtoms_name | character varying(50)  |           | not null | 
+ city         | character varying(30)  |           | not null | 
+ address      | character varying(255) |           | not null | 
+ key          | text                   |           |          | 
+Indexes:
+    "nsi_rw_stations_customs_pkey" PRIMARY KEY, btree (id)
+
+                                     Table "public.nsi_stations_foreign_links"
+  Column  |          Type          | Collation | Nullable |                        Default                         
+----------+------------------------+-----------+----------+--------------------------------------------------------
+ id       | integer                |           | not null | nextval('nsi_stations_foreign_links_id_seq'::regclass)
+ code1    | character varying(6)   |           | not null | 
+ name1    | character varying(100) |           | not null | 
+ country1 | character varying(2)   |           | not null | 
+ code2    | character varying(6)   |           | not null | 
+ name2    | character varying(100) |           | not null | 
+ country2 | character varying(2)   |           | not null | 
+ key      | text                   |           |          | 
+Indexes:
+    "nsi_stations_foreign_links_pkey" PRIMARY KEY, btree (id)
+
+                                     Table "public.nsi_transit_measures_of_ensuring"
+   Column    |         Type         | Collation | Nullable |                           Default                            
+-------------+----------------------+-----------+----------+--------------------------------------------------------------
+ id          | integer              |           | not null | nextval('nsi_transit_measures_of_ensuring_id_seq'::regclass)
+ code        | character varying(2) |           | not null | 
+ description | text                 |           |          | 
+ key         | character varying(2) |           | not null | 
+Indexes:
+    "nsi_transit_measures_of_ensuring_pkey" PRIMARY KEY, btree (id)
+
+                                      Table "public.nsi_transport_kind"
+   Column    |          Type          | Collation | Nullable |                    Default                     
+-------------+------------------------+-----------+----------+------------------------------------------------
+ id          | integer                |           | not null | nextval('nsi_transport_kind_id_seq'::regclass)
+ code        | character varying(2)   |           | not null | 
+ description | character varying(255) |           | not null | 
+ key         | character varying(2)   |           | not null | 
+Indexes:
+    "nsi_transport_kind_pkey" PRIMARY KEY, btree (id)
+
+                                      Table "public.nsi_type_of_vehicles"
+   Column    |          Type          | Collation | Nullable |                     Default                      
+-------------+------------------------+-----------+----------+--------------------------------------------------
+ id          | integer                |           | not null | nextval('nsi_type_of_vehicles_id_seq'::regclass)
+ code        | character varying(3)   |           | not null | 
+ description | character varying(130) |           | not null | 
+ comment     | character varying(255) |           | not null | 
+ key         | character varying(3)   |           | not null | 
+Indexes:
+    "nsi_type_of_vehicles_pkey" PRIMARY KEY, btree (id)
+
+                                      Table "public.nsi_unit"
+   Column    |          Type          | Collation | Nullable |               Default                
+-------------+------------------------+-----------+----------+--------------------------------------
+ id          | integer                |           | not null | nextval('nsi_unit_id_seq'::regclass)
+ code        | character varying(3)   |           | not null | 
+ abbr        | character varying(100) |           | not null | 
+ description | character varying(255) |           | not null | 
+ key         | character varying(3)   |           | not null | 
+Indexes:
+    "nsi_unit_pkey" PRIMARY KEY, btree (id)
+
+                                       Table "public.nsi_vmtp_country"
+    Column    |          Type          | Collation | Nullable |                   Default                    
+--------------+------------------------+-----------+----------+----------------------------------------------
+ id           | integer                |           | not null | nextval('nsi_vmtp_country_id_seq'::regclass)
+ vmtp_code    | character varying(3)   |           | not null | 
+ country_code | character varying(3)   |           | not null | 
+ name         | character varying(255) |           | not null | 
+Indexes:
+    "nsi_vmtp_country_pkey" PRIMARY KEY, btree (id)
+
+                                         Table "public.nsi_warehouse_customs"
+     Column     |           Type           | Collation | Nullable |                      Default                      
+----------------+--------------------------+-----------+----------+---------------------------------------------------
+ id             | integer                  |           | not null | nextval('nsi_warehouse_customs_id_seq'::regclass)
+ country_ab2    | character varying(255)   |           | not null | 
+ customs_code   | character varying(255)   |           | not null | 
+ license_number | character varying(255)   |           | not null | 
+ license_date   | timestamp with time zone |           |          | 
+ owner          | character varying(255)   |           | not null | 
+ offise_address | text                     |           |          | 
+ address        | text                     |           |          | 
+ phone          | character varying(255)   |           | not null | 
+ website        | character varying(255)   |           | not null | 
+ email          | character varying(255)   |           | not null | 
+ inn            | character varying(255)   |           | not null | 
+ kpp            | character varying(255)   |           | not null | 
+ transport_kind | text                     |           |          | 
+ is_exciz       | character varying(255)   |           | not null | 
+ warehouse_type | text                     |           |          | 
+ key            | text                     |           |          | 
+Indexes:
+    "nsi_warehouse_customs_pkey" PRIMARY KEY, btree (id)
+
+                                         Table "public.nsi_warehouse_temporary"
+     Column     |           Type           | Collation | Nullable |                       Default                       
+----------------+--------------------------+-----------+----------+-----------------------------------------------------
+ id             | integer                  |           | not null | nextval('nsi_warehouse_temporary_id_seq'::regclass)
+ country_ab2    | character varying(255)   |           | not null | 
+ customs_code   | character varying(255)   |           | not null | 
+ license_number | character varying(255)   |           | not null | 
+ license_date   | timestamp with time zone |           |          | 
+ owner          | character varying(255)   |           | not null | 
+ offise_address | text                     |           |          | 
+ address        | text                     |           |          | 
+ phone          | character varying(255)   |           | not null | 
+ website        | character varying(255)   |           | not null | 
+ email          | character varying(255)   |           | not null | 
+ inn            | character varying(255)   |           | not null | 
+ kpp            | character varying(255)   |           | not null | 
+ transport_kind | text                     |           |          | 
+ is_exciz       | character varying(255)   |           | not null | 
+ warehouse_type | text                     |           |          | 
+ key            | text                     |           |          | 
+Indexes:
+    "nsi_warehouse_temporary_pkey" PRIMARY KEY, btree (id)
+

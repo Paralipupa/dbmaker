@@ -1,0 +1,2 @@
+s/[a-z_0-9]*/class &(serializers.ModelSerializer):\n    class Meta:\n        mode = & /
+a\        fields = '__all__'\n

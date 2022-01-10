@@ -1,0 +1,295 @@
+class nsi_airports_rus(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_airports_rus 
+        fields = '__all__'
+
+class nsi_ati_cities(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_ati_cities 
+        fields = '__all__'
+
+class nsi_ati_customs_map(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_ati_customs_map 
+        fields = '__all__'
+
+class nsi_car_type(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_car_type 
+        fields = '__all__'
+
+class nsi_color(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_color 
+        fields = '__all__'
+
+class nsi_countries(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_countries 
+        fields = '__all__'
+
+class nsi_currency_code(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_currency_code 
+        fields = '__all__'
+
+class nsi_customs(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_customs 
+        fields = '__all__'
+
+class nsi_customs_ced(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_customs_ced 
+        fields = '__all__'
+
+class nsi_customs_hierarchy(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_customs_hierarchy 
+        fields = '__all__'
+
+class nsi_customs_payments_kind(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_customs_payments_kind 
+        fields = '__all__'
+
+class nsi_customs_procedures_kind(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_customs_procedures_kind 
+        fields = '__all__'
+
+class nsi_customs_region(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_customs_region 
+        fields = '__all__'
+
+class nsi_customs_value_determination_kind(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_customs_value_determination_kind 
+        fields = '__all__'
+
+class nsi_deal_feature(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_deal_feature 
+        fields = '__all__'
+
+class nsi_deal_nature(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_deal_nature 
+        fields = '__all__'
+
+class nsi_delivery_terms(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_delivery_terms 
+        fields = '__all__'
+
+class nsi_doc_reference(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_doc_reference 
+        fields = '__all__'
+
+class nsi_edi_container_type(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_edi_container_type 
+        fields = '__all__'
+
+class nsi_edi_wagon_type(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_edi_wagon_type 
+        fields = '__all__'
+
+class nsi_edi_weight_definition_mode(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_edi_weight_definition_mode 
+        fields = '__all__'
+
+class nsi_ensure_etsng(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_ensure_etsng 
+        fields = '__all__'
+
+class nsi_ensure_payment_code(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_ensure_payment_code 
+        fields = '__all__'
+
+class nsi_etsng(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_etsng 
+        fields = '__all__'
+
+class nsi_forms_of_payment(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_forms_of_payment 
+        fields = '__all__'
+
+class nsi_gng(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_gng 
+        fields = '__all__'
+
+class nsi_gng_etsng(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_gng_etsng 
+        fields = '__all__'
+
+class nsi_hazardous_cargo_code_imo(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_hazardous_cargo_code_imo 
+        fields = '__all__'
+
+class nsi_hazardous_cargo_code_un(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_hazardous_cargo_code_un 
+        fields = '__all__'
+
+class nsi_intellectual(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_intellectual 
+        fields = '__all__'
+
+class nsi_intellectual_documents(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_intellectual_documents 
+        fields = '__all__'
+
+class nsi_intellectual_trade_marks(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_intellectual_trade_marks 
+        fields = '__all__'
+
+class nsi_mnt(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_mnt 
+        fields = '__all__'
+
+class nsi_movement_of_goods_features(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_movement_of_goods_features 
+        fields = '__all__'
+
+class nsi_package(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_package 
+        fields = '__all__'
+
+class nsi_package_type(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_package_type 
+        fields = '__all__'
+
+class nsi_payment_code(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_payment_code 
+        fields = '__all__'
+
+class nsi_payment_terms(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_payment_terms 
+        fields = '__all__'
+
+class nsi_payment_way_code(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_payment_way_code 
+        fields = '__all__'
+
+class nsi_personal_document_kind(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_personal_document_kind 
+        fields = '__all__'
+
+class nsi_personal_document_kind_155(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_personal_document_kind_155 
+        fields = '__all__'
+
+class nsi_pi_usage(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_pi_usage 
+        fields = '__all__'
+
+class nsi_preferences_kind(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_preferences_kind 
+        fields = '__all__'
+
+class nsi_references(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_references 
+        fields = '__all__'
+
+class nsi_rw_countries(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_rw_countries 
+        fields = '__all__'
+
+class nsi_rw_roads(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_rw_roads 
+        fields = '__all__'
+
+class nsi_rw_stations(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_rw_stations 
+        fields = '__all__'
+
+class nsi_rw_stations_customs(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_rw_stations_customs 
+        fields = '__all__'
+
+class nsi_sea_ports(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_sea_ports 
+        fields = '__all__'
+
+class nsi_stations_foreign_links(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_stations_foreign_links 
+        fields = '__all__'
+
+class nsi_tnved(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_tnved 
+        fields = '__all__'
+
+class nsi_tnved_14(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_tnved_14 
+        fields = '__all__'
+
+class nsi_transit_measures_of_ensuring(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_transit_measures_of_ensuring 
+        fields = '__all__'
+
+class nsi_transport_kind(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_transport_kind 
+        fields = '__all__'
+
+class nsi_type_of_vehicles(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_type_of_vehicles 
+        fields = '__all__'
+
+class nsi_unit(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_unit 
+        fields = '__all__'
+
+class nsi_vmtp_country(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_vmtp_country 
+        fields = '__all__'
+
+class nsi_warehouse_customs(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_warehouse_customs 
+        fields = '__all__'
+
+class nsi_warehouse_temporary(serializers.ModelSerializer):
+    class Meta:
+        mode = nsi_warehouse_temporary 
+        fields = '__all__'
+
