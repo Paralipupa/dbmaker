@@ -13,14 +13,13 @@ s/timestamp with time zone/DateTimeField(blank=True, null=True)/
 s/timestamp without time zone/DateTimeField(blank=True, null=True)/
 s/Table "public./class /
 s/"//
-#/\(^class .*\)/s//\1(models.Model):\n    guid      = models.CharField(max_length=32)/
-/\(^class .*\)/s//\1(models.Model):/
+/\(^class .*\)/s//\1(HashMixin, CommonInfo):/
 /\(.*= models.*\)/s//    \1/
 /^Indexes:.*/s///
 /.*PRIMARY KEY.*/s///
 / \+id.*/s///
+/ \+guid.*/s///
+/ \+from_date.*/s///
+/ \+to_date.*/s///
+/ \+modify_date.*/s///
 s/nsi_//
-
-
-
-

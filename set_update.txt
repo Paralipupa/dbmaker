@@ -1,0 +1,1 @@
+s/\(.*\)/UPDATE \1 SET guid=md5((key,from_date)::varchar)::uuid;/

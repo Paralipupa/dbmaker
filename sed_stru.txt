@@ -18,6 +18,10 @@ s/"//
 /^Indexes:.*/s///
 /.*PRIMARY KEY.*/s///
 / \+id.*/s///
+/ \+guid.*/s///
+/ \+from_date.*/s///
+/ \+to_date.*/s///
+/ \+modify_date.*/s///
 s/nsi_//
 
 

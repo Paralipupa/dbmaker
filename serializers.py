@@ -1,15 +1,31 @@
 
 
+from rest_framework import serializers
+from nsi import models
+
+class tablemapSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.tablemap
+        fields = (
+            'id',
+            'name',
+            'description',
+            'modify_date',
+        )
+
+
 class airports_rusSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.airports_rus
         fields = (
             'guid',
+            'from_date',
+            'to_date',
+            'modify_date',
             'code_iata',
             'name',
             'city',
-            'key',
-        )
+            )
 
 
 class ati_citiesSerializer(serializers.ModelSerializer):
@@ -17,14 +33,16 @@ class ati_citiesSerializer(serializers.ModelSerializer):
         model = models.ati_cities
         fields = (
             'guid',
+            'from_date',
+            'to_date',
+            'modify_date',
             'city_id',
             'region_id',
             'country_id',
             'city',
             'region',
             'country',
-            'key',
-        )
+            )
 
 
 class ati_customs_mapSerializer(serializers.ModelSerializer):
@@ -32,13 +50,15 @@ class ati_customs_mapSerializer(serializers.ModelSerializer):
         model = models.ati_customs_map
         fields = (
             'guid',
+            'from_date',
+            'to_date',
+            'modify_date',
             'country_code',
             'customs_code',
             'customs_city',
             'ati_city',
             'ati_city_id',
-            'key',
-        )
+            )
 
 
 class car_typeSerializer(serializers.ModelSerializer):
@@ -46,10 +66,12 @@ class car_typeSerializer(serializers.ModelSerializer):
         model = models.car_type
         fields = (
             'guid',
+            'from_date',
+            'to_date',
+            'modify_date',
             'code',
             'name',
-            'key',
-        )
+            )
 
 
 class colorSerializer(serializers.ModelSerializer):
@@ -57,10 +79,12 @@ class colorSerializer(serializers.ModelSerializer):
         model = models.color
         fields = (
             'guid',
+            'from_date',
+            'to_date',
+            'modify_date',
             'code',
             'description',
-            'key',
-        )
+            )
 
 
 class countriesSerializer(serializers.ModelSerializer):
@@ -68,6 +92,9 @@ class countriesSerializer(serializers.ModelSerializer):
         model = models.countries
         fields = (
             'guid',
+            'from_date',
+            'to_date',
+            'modify_date',
             'abc2',
             'abc3',
             'code',
@@ -75,8 +102,7 @@ class countriesSerializer(serializers.ModelSerializer):
             'name',
             'name_eng',
             'classification',
-            'key',
-        )
+            )
 
 
 class currency_codeSerializer(serializers.ModelSerializer):
@@ -84,12 +110,14 @@ class currency_codeSerializer(serializers.ModelSerializer):
         model = models.currency_code
         fields = (
             'guid',
+            'from_date',
+            'to_date',
+            'modify_date',
             'code',
             'abc3',
             'short_name',
             'name',
-            'key',
-        )
+            )
 
 
 class customsSerializer(serializers.ModelSerializer):
@@ -97,6 +125,9 @@ class customsSerializer(serializers.ModelSerializer):
         model = models.customs
         fields = (
             'guid',
+            'from_date',
+            'to_date',
+            'modify_date',
             'country_code',
             'code',
             'name',
@@ -105,9 +136,7 @@ class customsSerializer(serializers.ModelSerializer):
             'phone',
             'oldcode',
             'code5',
-            'from_date',
-            'key',
-        )
+            )
 
 
 class customs_cedSerializer(serializers.ModelSerializer):
@@ -115,6 +144,9 @@ class customs_cedSerializer(serializers.ModelSerializer):
         model = models.customs_ced
         fields = (
             'guid',
+            'from_date',
+            'to_date',
+            'modify_date',
             'code',
             'name',
             'code_ced',
@@ -123,10 +155,7 @@ class customs_cedSerializer(serializers.ModelSerializer):
             'notes',
             'order',
             'order_date',
-            'from_date',
-            'to_date',
-            'key',
-        )
+            )
 
 
 class customs_hierarchySerializer(serializers.ModelSerializer):
@@ -134,14 +163,16 @@ class customs_hierarchySerializer(serializers.ModelSerializer):
         model = models.customs_hierarchy
         fields = (
             'guid',
+            'from_date',
+            'to_date',
+            'modify_date',
             'code',
             'name',
             'customs_code',
             'customs_name',
             'customs_office_code',
             'customs_office_name',
-            'key',
-        )
+            )
 
 
 class customs_payments_kindSerializer(serializers.ModelSerializer):
@@ -149,10 +180,12 @@ class customs_payments_kindSerializer(serializers.ModelSerializer):
         model = models.customs_payments_kind
         fields = (
             'guid',
+            'from_date',
+            'to_date',
+            'modify_date',
             'code',
             'name',
-            'key',
-        )
+            )
 
 
 class customs_procedures_kindSerializer(serializers.ModelSerializer):
@@ -160,10 +193,12 @@ class customs_procedures_kindSerializer(serializers.ModelSerializer):
         model = models.customs_procedures_kind
         fields = (
             'guid',
+            'from_date',
+            'to_date',
+            'modify_date',
             'code',
             'name',
-            'key',
-        )
+            )
 
 
 class customs_regionSerializer(serializers.ModelSerializer):
@@ -171,16 +206,16 @@ class customs_regionSerializer(serializers.ModelSerializer):
         model = models.customs_region
         fields = (
             'guid',
+            'from_date',
+            'to_date',
+            'modify_date',
             'code',
             'name',
             'region',
             'region_okato',
             'order',
             'order_date',
-            'from_date',
-            'to_date',
-            'key',
-        )
+            )
 
 
 class customs_value_determination_kindSerializer(serializers.ModelSerializer):
@@ -188,10 +223,12 @@ class customs_value_determination_kindSerializer(serializers.ModelSerializer):
         model = models.customs_value_determination_kind
         fields = (
             'guid',
+            'from_date',
+            'to_date',
+            'modify_date',
             'code',
             'description',
-            'key',
-        )
+            )
 
 
 class deal_featureSerializer(serializers.ModelSerializer):
@@ -199,10 +236,12 @@ class deal_featureSerializer(serializers.ModelSerializer):
         model = models.deal_feature
         fields = (
             'guid',
+            'from_date',
+            'to_date',
+            'modify_date',
             'code',
             'name',
-            'key',
-        )
+            )
 
 
 class deal_natureSerializer(serializers.ModelSerializer):
@@ -210,10 +249,12 @@ class deal_natureSerializer(serializers.ModelSerializer):
         model = models.deal_nature
         fields = (
             'guid',
+            'from_date',
+            'to_date',
+            'modify_date',
             'code',
             'name',
-            'key',
-        )
+            )
 
 
 class delivery_termsSerializer(serializers.ModelSerializer):
@@ -221,11 +262,13 @@ class delivery_termsSerializer(serializers.ModelSerializer):
         model = models.delivery_terms
         fields = (
             'guid',
+            'from_date',
+            'to_date',
+            'modify_date',
             'code_d',
             'code',
             'name',
-            'key',
-        )
+            )
 
 
 class edi_container_typeSerializer(serializers.ModelSerializer):
@@ -233,12 +276,15 @@ class edi_container_typeSerializer(serializers.ModelSerializer):
         model = models.edi_container_type
         fields = (
             'guid',
+            'from_date',
+            'to_date',
+            'modify_date',
             'code',
             'code_old',
             'length',
             'width',
             'name',
-        )
+            )
 
 
 class edi_wagon_typeSerializer(serializers.ModelSerializer):
@@ -246,11 +292,13 @@ class edi_wagon_typeSerializer(serializers.ModelSerializer):
         model = models.edi_wagon_type
         fields = (
             'guid',
+            'from_date',
+            'to_date',
+            'modify_date',
             'code',
             'description',
             'abbr',
-            'key',
-        )
+            )
 
 
 class edi_weight_definition_modeSerializer(serializers.ModelSerializer):
@@ -258,10 +306,12 @@ class edi_weight_definition_modeSerializer(serializers.ModelSerializer):
         model = models.edi_weight_definition_mode
         fields = (
             'guid',
+            'from_date',
+            'to_date',
+            'modify_date',
             'code',
             'name',
-            'key',
-        )
+            )
 
 
 class ensure_payment_codeSerializer(serializers.ModelSerializer):
@@ -269,10 +319,12 @@ class ensure_payment_codeSerializer(serializers.ModelSerializer):
         model = models.ensure_payment_code
         fields = (
             'guid',
+            'from_date',
+            'to_date',
+            'modify_date',
             'code',
             'name',
-            'key',
-        )
+            )
 
 
 class forms_of_paymentSerializer(serializers.ModelSerializer):
@@ -280,10 +332,12 @@ class forms_of_paymentSerializer(serializers.ModelSerializer):
         model = models.forms_of_payment
         fields = (
             'guid',
+            'from_date',
+            'to_date',
+            'modify_date',
             'code',
             'name',
-            'key',
-        )
+            )
 
 
 class hazardous_cargo_code_imoSerializer(serializers.ModelSerializer):
@@ -291,10 +345,12 @@ class hazardous_cargo_code_imoSerializer(serializers.ModelSerializer):
         model = models.hazardous_cargo_code_imo
         fields = (
             'guid',
+            'from_date',
+            'to_date',
+            'modify_date',
             'code',
             'name',
-            'key',
-        )
+            )
 
 
 class hazardous_cargo_code_unSerializer(serializers.ModelSerializer):
@@ -302,11 +358,14 @@ class hazardous_cargo_code_unSerializer(serializers.ModelSerializer):
         model = models.hazardous_cargo_code_un
         fields = (
             'guid',
+            'from_date',
+            'to_date',
+            'modify_date',
             'code',
             'name',
-            'class_name',
-            'clarrification_code',
-        )
+            'classification_type',
+            'classification_code',
+            )
 
 
 class intellectualSerializer(serializers.ModelSerializer):
@@ -314,6 +373,9 @@ class intellectualSerializer(serializers.ModelSerializer):
         model = models.intellectual
         fields = (
             'guid',
+            'from_date',
+            'to_date',
+            'modify_date',
             'code',
             'description',
             'inn',
@@ -327,8 +389,7 @@ class intellectualSerializer(serializers.ModelSerializer):
             'order_date',
             'full_description',
             'full_description_2',
-            'key',
-        )
+            )
 
 
 class intellectual_documentsSerializer(serializers.ModelSerializer):
@@ -336,10 +397,13 @@ class intellectual_documentsSerializer(serializers.ModelSerializer):
         model = models.intellectual_documents
         fields = (
             'guid',
+            'from_date',
+            'to_date',
+            'modify_date',
             'code',
             'document',
             'document_date',
-        )
+            )
 
 
 class intellectual_trade_marksSerializer(serializers.ModelSerializer):
@@ -347,11 +411,13 @@ class intellectual_trade_marksSerializer(serializers.ModelSerializer):
         model = models.intellectual_trade_marks
         fields = (
             'guid',
+            'from_date',
+            'to_date',
+            'modify_date',
             'code',
             'description',
             'picture_file_name',
-            'key',
-        )
+            )
 
 
 class mntSerializer(serializers.ModelSerializer):
@@ -359,10 +425,12 @@ class mntSerializer(serializers.ModelSerializer):
         model = models.mnt
         fields = (
             'guid',
+            'from_date',
+            'to_date',
+            'modify_date',
             'code',
             'name',
-            'key',
-        )
+            )
 
 
 class movement_of_goods_featuresSerializer(serializers.ModelSerializer):
@@ -370,10 +438,12 @@ class movement_of_goods_featuresSerializer(serializers.ModelSerializer):
         model = models.movement_of_goods_features
         fields = (
             'guid',
+            'from_date',
+            'to_date',
+            'modify_date',
             'code',
             'name',
-            'key',
-        )
+            )
 
 
 class packageSerializer(serializers.ModelSerializer):
@@ -381,11 +451,13 @@ class packageSerializer(serializers.ModelSerializer):
         model = models.package
         fields = (
             'guid',
+            'from_date',
+            'to_date',
+            'modify_date',
             'code',
             'name',
             'name_eng',
-            'key',
-        )
+            )
 
 
 class package_typeSerializer(serializers.ModelSerializer):
@@ -393,10 +465,12 @@ class package_typeSerializer(serializers.ModelSerializer):
         model = models.package_type
         fields = (
             'guid',
+            'from_date',
+            'to_date',
+            'modify_date',
             'code',
             'name',
-            'key',
-        )
+            )
 
 
 class payment_codeSerializer(serializers.ModelSerializer):
@@ -404,10 +478,12 @@ class payment_codeSerializer(serializers.ModelSerializer):
         model = models.payment_code
         fields = (
             'guid',
+            'from_date',
+            'to_date',
+            'modify_date',
             'code',
             'name',
-            'key',
-        )
+            )
 
 
 class payment_termsSerializer(serializers.ModelSerializer):
@@ -415,11 +491,13 @@ class payment_termsSerializer(serializers.ModelSerializer):
         model = models.payment_terms
         fields = (
             'guid',
+            'from_date',
+            'to_date',
+            'modify_date',
             'code',
             'description',
             'month_count',
-            'key',
-        )
+            )
 
 
 class payment_way_codeSerializer(serializers.ModelSerializer):
@@ -427,11 +505,13 @@ class payment_way_codeSerializer(serializers.ModelSerializer):
         model = models.payment_way_code
         fields = (
             'guid',
+            'from_date',
+            'to_date',
+            'modify_date',
             'country_ab2',
             'code',
             'name',
-            'key',
-        )
+            )
 
 
 class personal_document_kindSerializer(serializers.ModelSerializer):
@@ -439,14 +519,16 @@ class personal_document_kindSerializer(serializers.ModelSerializer):
         model = models.personal_document_kind
         fields = (
             'guid',
+            'from_date',
+            'to_date',
+            'modify_date',
             'code',
             'name',
             'abbr',
             'series_mask',
             'number_mask',
             'comment',
-            'key',
-        )
+            )
 
 
 class personal_document_kind_155Serializer(serializers.ModelSerializer):
@@ -454,13 +536,15 @@ class personal_document_kind_155Serializer(serializers.ModelSerializer):
         model = models.personal_document_kind_155
         fields = (
             'guid',
+            'from_date',
+            'to_date',
+            'modify_date',
             'country_code',
             'doc_type_code',
             'code',
             'name',
             'citizenship_mark',
-            'key',
-        )
+            )
 
 
 class pi_usageSerializer(serializers.ModelSerializer):
@@ -468,10 +552,12 @@ class pi_usageSerializer(serializers.ModelSerializer):
         model = models.pi_usage
         fields = (
             'guid',
+            'from_date',
+            'to_date',
+            'modify_date',
             'code',
             'description',
-            'key',
-        )
+            )
 
 
 class preferences_kindSerializer(serializers.ModelSerializer):
@@ -479,6 +565,9 @@ class preferences_kindSerializer(serializers.ModelSerializer):
         model = models.preferences_kind
         fields = (
             'guid',
+            'from_date',
+            'to_date',
+            'modify_date',
             'code',
             'apply_to',
             'name',
@@ -486,11 +575,10 @@ class preferences_kindSerializer(serializers.ModelSerializer):
             'use_in_kz',
             'use_in_rf',
             'use_in_am',
-            'key',
             'procedures_mask',
             'procedures_mask_order',
             'procedures_mask_order_date',
-        )
+            )
 
 
 class rw_countriesSerializer(serializers.ModelSerializer):
@@ -498,6 +586,9 @@ class rw_countriesSerializer(serializers.ModelSerializer):
         model = models.rw_countries
         fields = (
             'guid',
+            'from_date',
+            'to_date',
+            'modify_date',
             'rw_country_code',
             'name',
             'abbr',
@@ -505,8 +596,7 @@ class rw_countriesSerializer(serializers.ModelSerializer):
             'administration_name',
             'abc2',
             'abc3',
-            'key',
-        )
+            )
 
 
 class rw_roadsSerializer(serializers.ModelSerializer):
@@ -514,11 +604,13 @@ class rw_roadsSerializer(serializers.ModelSerializer):
         model = models.rw_roads
         fields = (
             'guid',
+            'from_date',
+            'to_date',
+            'modify_date',
             'road_code',
             'name',
             'abbr',
-            'key',
-        )
+            )
 
 
 class rw_stationsSerializer(serializers.ModelSerializer):
@@ -526,6 +618,9 @@ class rw_stationsSerializer(serializers.ModelSerializer):
         model = models.rw_stations
         fields = (
             'guid',
+            'from_date',
+            'to_date',
+            'modify_date',
             'code5',
             'code',
             'name',
@@ -533,8 +628,7 @@ class rw_stationsSerializer(serializers.ModelSerializer):
             'abbr',
             'road_code',
             'country_code',
-            'key',
-        )
+            )
 
 
 class rw_stations_customsSerializer(serializers.ModelSerializer):
@@ -542,6 +636,9 @@ class rw_stations_customsSerializer(serializers.ModelSerializer):
         model = models.rw_stations_customs
         fields = (
             'guid',
+            'from_date',
+            'to_date',
+            'modify_date',
             'code5',
             'code',
             'name',
@@ -549,8 +646,7 @@ class rw_stations_customsSerializer(serializers.ModelSerializer):
             'curtoms_name',
             'city',
             'address',
-            'key',
-        )
+            )
 
 
 class stations_foreign_linksSerializer(serializers.ModelSerializer):
@@ -558,14 +654,16 @@ class stations_foreign_linksSerializer(serializers.ModelSerializer):
         model = models.stations_foreign_links
         fields = (
             'guid',
+            'from_date',
+            'to_date',
+            'modify_date',
             'code1',
             'name1',
             'country1',
             'code2',
             'name2',
             'country2',
-            'key',
-        )
+            )
 
 
 class transit_measures_of_ensuringSerializer(serializers.ModelSerializer):
@@ -573,10 +671,12 @@ class transit_measures_of_ensuringSerializer(serializers.ModelSerializer):
         model = models.transit_measures_of_ensuring
         fields = (
             'guid',
+            'from_date',
+            'to_date',
+            'modify_date',
             'code',
             'description',
-            'key',
-        )
+            )
 
 
 class transport_kindSerializer(serializers.ModelSerializer):
@@ -584,10 +684,12 @@ class transport_kindSerializer(serializers.ModelSerializer):
         model = models.transport_kind
         fields = (
             'guid',
+            'from_date',
+            'to_date',
+            'modify_date',
             'code',
             'description',
-            'key',
-        )
+            )
 
 
 class type_of_vehiclesSerializer(serializers.ModelSerializer):
@@ -595,11 +697,13 @@ class type_of_vehiclesSerializer(serializers.ModelSerializer):
         model = models.type_of_vehicles
         fields = (
             'guid',
+            'from_date',
+            'to_date',
+            'modify_date',
             'code',
             'description',
             'comment',
-            'key',
-        )
+            )
 
 
 class unitSerializer(serializers.ModelSerializer):
@@ -607,11 +711,13 @@ class unitSerializer(serializers.ModelSerializer):
         model = models.unit
         fields = (
             'guid',
+            'from_date',
+            'to_date',
+            'modify_date',
             'code',
             'abbr',
             'description',
-            'key',
-        )
+            )
 
 
 class vmtp_countrySerializer(serializers.ModelSerializer):
@@ -619,10 +725,13 @@ class vmtp_countrySerializer(serializers.ModelSerializer):
         model = models.vmtp_country
         fields = (
             'guid',
+            'from_date',
+            'to_date',
+            'modify_date',
             'vmtp_code',
             'country_code',
             'name',
-        )
+            )
 
 
 class warehouse_customsSerializer(serializers.ModelSerializer):
@@ -630,6 +739,9 @@ class warehouse_customsSerializer(serializers.ModelSerializer):
         model = models.warehouse_customs
         fields = (
             'guid',
+            'from_date',
+            'to_date',
+            'modify_date',
             'country_ab2',
             'customs_code',
             'license_number',
@@ -645,8 +757,7 @@ class warehouse_customsSerializer(serializers.ModelSerializer):
             'transport_kind',
             'is_exciz',
             'warehouse_type',
-            'key',
-        )
+            )
 
 
 class warehouse_temporarySerializer(serializers.ModelSerializer):
@@ -654,6 +765,9 @@ class warehouse_temporarySerializer(serializers.ModelSerializer):
         model = models.warehouse_temporary
         fields = (
             'guid',
+            'from_date',
+            'to_date',
+            'modify_date',
             'country_ab2',
             'customs_code',
             'license_number',
@@ -669,5 +783,4 @@ class warehouse_temporarySerializer(serializers.ModelSerializer):
             'transport_kind',
             'is_exciz',
             'warehouse_type',
-            'key',
-        )
+            )
