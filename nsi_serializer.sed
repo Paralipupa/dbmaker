@@ -14,6 +14,7 @@ s/'guid',//
 s/'from_date',//
 s/'to_date',//
 s/'modify_date',//
+s/'hash',//
 #s/'key',/'key',\n        )/
 
 

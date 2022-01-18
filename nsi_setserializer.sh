@@ -1,9 +1,10 @@
 #! /bin/bash
 #создание файла сериализации модулей (erializers.py) по input_struct.txt
-sed -f sed_serializer.txt input_struct.txt | 
+sed -f nsi_serializer.sed nsi_input_struct.txt | 
 sed /^$/d | 
 sed 's/^class /\n\nclass /' | 
 sed "s/fields = (/fields = (\n            'guid',(ggg)/" | 
+sed "s/(ggg)/\n            'hash',(ggg)/" |
 sed "s/(ggg)/\n            'from_date',(ggg)/" |
 sed "s/(ggg)/\n            'to_date',(ggg)/" |
 sed "s/(ggg)/\n            'modify_date',(ggg)/" |
