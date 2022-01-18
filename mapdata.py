@@ -8,8 +8,6 @@
       'description':''},
     'nsi_color': {'model':nsimodels.color, 'serializer':nsiserializers.colorSerializer, 'is_period':False,\
       'description':''},
-    'nsi_common_info': {'model':nsimodels.common_info, 'serializer':nsiserializers.common_infoSerializer, 'is_period':False,\
-      'description':'@common_info'},
     'nsi_countries': {'model':nsimodels.countries, 'serializer':nsiserializers.countriesSerializer, 'is_period':False,\
       'description':''},
     'nsi_currency_code': {'model':nsimodels.currency_code, 'serializer':nsiserializers.currency_codeSerializer, 'is_period':False,\
@@ -38,10 +36,6 @@
       'description':'@doc_reference'},
     'nsi_doc_reference_ex': {'model':nsimodels.doc_reference_ex, 'serializer':nsiserializers.doc_reference_exSerializer, 'is_period':False,\
       'description':'@doc_reference_ex'},
-    'nsi_dutyfree': {'model':nsimodels.dutyfree, 'serializer':nsiserializers.dutyfreeSerializer, 'is_period':False,\
-      'description':'@dutyfree'},
-    'nsi_ecop': {'model':nsimodels.ecop, 'serializer':nsiserializers.ecopSerializer, 'is_period':False,\
-      'description':'@ecop'},
     'nsi_edi_container_type': {'model':nsimodels.edi_container_type, 'serializer':nsiserializers.edi_container_typeSerializer, 'is_period':False,\
       'description':''},
     'nsi_edi_wagon_type': {'model':nsimodels.edi_wagon_type, 'serializer':nsiserializers.edi_wagon_typeSerializer, 'is_period':False,\
@@ -68,8 +62,6 @@
       'description':''},
     'nsi_intellectual_trade_marks': {'model':nsimodels.intellectual_trade_marks, 'serializer':nsiserializers.intellectual_trade_marksSerializer, 'is_period':False,\
       'description':''},
-    'nsi_keymap': {'model':nsimodels.keymap, 'serializer':nsiserializers.keymapSerializer, 'is_period':False,\
-      'description':'@keymap'},
     'nsi_mnt': {'model':nsimodels.mnt, 'serializer':nsiserializers.mntSerializer, 'is_period':False,\
       'description':''},
     'nsi_movement_of_goods_features': {'model':nsimodels.movement_of_goods_features, 'serializer':nsiserializers.movement_of_goods_featuresSerializer, 'is_period':False,\
@@ -104,8 +96,6 @@
       'description':'@sea_ports'},
     'nsi_stations_foreign_links': {'model':nsimodels.stations_foreign_links, 'serializer':nsiserializers.stations_foreign_linksSerializer, 'is_period':False,\
       'description':''},
-    'nsi_tablemap': {'model':nsimodels.tablemap, 'serializer':nsiserializers.tablemapSerializer, 'is_period':False,\
-      'description':'@tablemap'},
     'nsi_tnved': {'model':nsimodels.tnved, 'serializer':nsiserializers.tnvedSerializer, 'is_period':False,\
       'description':'@tnved'},
     'nsi_tnved_14': {'model':nsimodels.tnved_14, 'serializer':nsiserializers.tnved_14Serializer, 'is_period':False,\
@@ -122,7 +112,5 @@
       'description':''},
     'nsi_warehouse_customs': {'model':nsimodels.warehouse_customs, 'serializer':nsiserializers.warehouse_customsSerializer, 'is_period':False,\
       'description':''},
-    'nsi_warehouse_free': {'model':nsimodels.warehouse_free, 'serializer':nsiserializers.warehouse_freeSerializer, 'is_period':False,\
-      'description':'@warehouse_free'},
     'nsi_warehouse_temporary': {'model':nsimodels.warehouse_temporary, 'serializer':nsiserializers.warehouse_temporarySerializer, 'is_period':False,\
       'description':''},

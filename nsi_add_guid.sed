@@ -1,0 +1,1 @@
+s/\(.*\)/ALTER TABLE \1  ADD COLUMN IF NOT EXISTS guid varchar(36) DEFAULT NULL;/

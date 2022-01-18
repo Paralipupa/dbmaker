@@ -1,1 +1,0 @@
-s/[a-z_0-9]\+/\    '&' : {'model':models.&, 'serializer':serializers.&Serializer, 'is_period':False},/

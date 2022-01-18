@@ -15,11 +15,16 @@ nsi_customs_value_determination_kind
 nsi_deal_feature
 nsi_deal_nature
 nsi_delivery_terms
+nsi_doc_reference
+nsi_doc_reference_ex
 nsi_edi_container_type
 nsi_edi_wagon_type
 nsi_edi_weight_definition_mode
 nsi_ensure_payment_code
+nsi_etsng
 nsi_forms_of_payment
+nsi_gng
+nsi_gng_etsng
 nsi_hazardous_cargo_code_imo
 nsi_hazardous_cargo_code_un
 nsi_intellectual
@@ -40,7 +45,10 @@ nsi_rw_countries
 nsi_rw_roads
 nsi_rw_stations
 nsi_rw_stations_customs
+nsi_sea_ports
 nsi_stations_foreign_links
+nsi_tnved
+nsi_tnved_14
 nsi_transit_measures_of_ensuring
 nsi_transport_kind
 nsi_type_of_vehicles

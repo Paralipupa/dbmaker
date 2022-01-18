@@ -1,0 +1,1 @@
+s/\(.*\)/ALTER TABLE \1  ADD COLUMN IF NOT EXISTS hash varchar(40) DEFAULT NULL;/

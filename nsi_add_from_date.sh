@@ -1,4 +1,5 @@
 #! /bin/bash
 #создание файла описания модулей (models.py) по input_struct.txt
-sed -f sed_del.txt input_tables.txt | tee del_nsi.sql
+sed -f nsi_add_from_date.sed input_nsi_tables.txt | 
+tee nsi_add_from_date.sql
 

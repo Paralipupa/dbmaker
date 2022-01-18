@@ -1,6 +1,6 @@
 #! /bin/bash
 #создание файла описания модулей (models.py) по input_struct.txt
-sed -f nsi_models.sed nsi_input_struct.txt | 
+sed -f nsi_models.sed input_nsi_struct.txt | 
 sed /^$/d | 
 sed 's/^class /\nclass /' | 
 sed 's/class airports_rus(HashMixin, CommonInfo):/from django.db import models(ggg)\nclass airports_rus(HashMixin, CommonInfo):/' |
@@ -43,5 +43,6 @@ sed 's/(ggg)/\n        data = ",".join(hashed_fields)(ggg)/' |
 sed "s/(ggg)/\n        return _hashit(data.encode('utf-8'))(ggg)/" |
 sed 's/(ggg)/\n    hash_calculate = property(_get_hash)\n(ggg)/' |
 sed 's/(ggg)//' |
+sed 's/ \+$//' |
 tee models.py 
 

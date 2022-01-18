@@ -1,41 +1,14 @@
+            )
 
 
-from rest_framework import serializers
-from nsi import models
-
-class tablemapSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.tablemap
-        fields = (
-            'id',
-            'name',
-            'description',
-            'modify_date',
-        )
-
-
-class airports_rusSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.airports_rus
-        fields = (
-            'guid',
-            'from_date',
-            'to_date',
-            'modify_date',
+class nsi_airports_rus
             'code_iata',
             'name',
             'city',
             )
 
 
-class ati_citiesSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.ati_cities
-        fields = (
-            'guid',
-            'from_date',
-            'to_date',
-            'modify_date',
+class nsi_ati_cities
             'city_id',
             'region_id',
             'country_id',
@@ -45,14 +18,7 @@ class ati_citiesSerializer(serializers.ModelSerializer):
             )
 
 
-class ati_customs_mapSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.ati_customs_map
-        fields = (
-            'guid',
-            'from_date',
-            'to_date',
-            'modify_date',
+class nsi_ati_customs_map
             'country_code',
             'customs_code',
             'customs_city',
@@ -61,40 +27,19 @@ class ati_customs_mapSerializer(serializers.ModelSerializer):
             )
 
 
-class car_typeSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.car_type
-        fields = (
-            'guid',
-            'from_date',
-            'to_date',
-            'modify_date',
+class nsi_car_type
             'code',
             'name',
             )
 
 
-class colorSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.color
-        fields = (
-            'guid',
-            'from_date',
-            'to_date',
-            'modify_date',
+class nsi_color
             'code',
             'description',
             )
 
 
-class countriesSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.countries
-        fields = (
-            'guid',
-            'from_date',
-            'to_date',
-            'modify_date',
+class nsi_countries
             'abc2',
             'abc3',
             'code',
@@ -105,14 +50,7 @@ class countriesSerializer(serializers.ModelSerializer):
             )
 
 
-class currency_codeSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.currency_code
-        fields = (
-            'guid',
-            'from_date',
-            'to_date',
-            'modify_date',
+class nsi_currency_code
             'code',
             'abc3',
             'short_name',
@@ -120,14 +58,7 @@ class currency_codeSerializer(serializers.ModelSerializer):
             )
 
 
-class customsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.customs
-        fields = (
-            'guid',
-            'from_date',
-            'to_date',
-            'modify_date',
+class nsi_customs
             'country_code',
             'code',
             'name',
@@ -139,33 +70,19 @@ class customsSerializer(serializers.ModelSerializer):
             )
 
 
-class customs_cedSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.customs_ced
-        fields = (
-            'guid',
-            'from_date',
-            'to_date',
-            'modify_date',
+class nsi_customs_ced
             'code',
             'name',
             'code_ced',
             'ced_name',
             'transport_kind',
             'notes',
-            'order',
+            'order_number',
             'order_date',
             )
 
 
-class customs_hierarchySerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.customs_hierarchy
-        fields = (
-            'guid',
-            'from_date',
-            'to_date',
-            'modify_date',
+class nsi_customs_hierarchy
             'code',
             'name',
             'customs_code',
@@ -175,110 +92,73 @@ class customs_hierarchySerializer(serializers.ModelSerializer):
             )
 
 
-class customs_payments_kindSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.customs_payments_kind
-        fields = (
-            'guid',
-            'from_date',
-            'to_date',
-            'modify_date',
+class nsi_customs_payments_kind
             'code',
             'name',
             )
 
 
-class customs_procedures_kindSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.customs_procedures_kind
-        fields = (
-            'guid',
-            'from_date',
-            'to_date',
-            'modify_date',
+class nsi_customs_procedures_kind
             'code',
             'name',
             )
 
 
-class customs_regionSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.customs_region
-        fields = (
-            'guid',
-            'from_date',
-            'to_date',
-            'modify_date',
+class nsi_customs_region
             'code',
             'name',
             'region',
             'region_okato',
-            'order',
+            'order_number',
             'order_date',
             )
 
 
-class customs_value_determination_kindSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.customs_value_determination_kind
-        fields = (
-            'guid',
-            'from_date',
-            'to_date',
-            'modify_date',
+class nsi_customs_value_determination_kind
             'code',
             'description',
             )
 
 
-class deal_featureSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.deal_feature
-        fields = (
-            'guid',
-            'from_date',
-            'to_date',
-            'modify_date',
+class nsi_deal_feature
             'code',
             'name',
             )
 
 
-class deal_natureSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.deal_nature
-        fields = (
-            'guid',
-            'from_date',
-            'to_date',
-            'modify_date',
+class nsi_deal_nature
             'code',
             'name',
             )
 
 
-class delivery_termsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.delivery_terms
-        fields = (
-            'guid',
-            'from_date',
-            'to_date',
-            'modify_date',
+class nsi_delivery_terms
             'code_d',
             'code',
             'name',
             )
 
 
-class edi_container_typeSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.edi_container_type
-        fields = (
-            'guid',
-            'from_date',
-            'to_date',
-            'modify_date',
+class nsi_doc_reference
+            'code',
+            'documentgroup',
+            'description',
+            'documentmodeid',
+            'documentname',
+            )
+
+
+class nsi_doc_reference_ex
+            'code',
+            'documentgroup',
+            'description',
+            'documentmodeid',
+            'documentname',
+            'end_date',
+            )
+
+
+class nsi_edi_container_type
             'code',
             'code_old',
             'length',
@@ -287,80 +167,62 @@ class edi_container_typeSerializer(serializers.ModelSerializer):
             )
 
 
-class edi_wagon_typeSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.edi_wagon_type
-        fields = (
-            'guid',
-            'from_date',
-            'to_date',
-            'modify_date',
+class nsi_edi_wagon_type
             'code',
             'description',
             'abbr',
             )
 
 
-class edi_weight_definition_modeSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.edi_weight_definition_mode
-        fields = (
-            'guid',
-            'from_date',
-            'to_date',
-            'modify_date',
+class nsi_edi_weight_definition_mode
             'code',
             'name',
             )
 
 
-class ensure_payment_codeSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.ensure_payment_code
-        fields = (
-            'guid',
-            'from_date',
-            'to_date',
-            'modify_date',
+class nsi_ensure_payment_code
             'code',
             'name',
             )
 
 
-class forms_of_paymentSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.forms_of_payment
-        fields = (
-            'guid',
-            'from_date',
-            'to_date',
-            'modify_date',
+class nsi_etsng
+            'code',
+            'parent',
+            'description',
+            'iscode',
+            )
+
+
+class nsi_forms_of_payment
             'code',
             'name',
             )
 
 
-class hazardous_cargo_code_imoSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.hazardous_cargo_code_imo
-        fields = (
-            'guid',
-            'from_date',
-            'to_date',
-            'modify_date',
+class nsi_gng
+            'code',
+            'parent',
+            'description',
+            'iscode',
+            )
+
+
+class nsi_gng_etsng
+            'gng_code',
+            'gng_description',
+            'etsng_code',
+            'etsng_description',
+            )
+
+
+class nsi_hazardous_cargo_code_imo
             'code',
             'name',
             )
 
 
-class hazardous_cargo_code_unSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.hazardous_cargo_code_un
-        fields = (
-            'guid',
-            'from_date',
-            'to_date',
-            'modify_date',
+class nsi_hazardous_cargo_code_un
             'code',
             'name',
             'classification_type',
@@ -368,14 +230,7 @@ class hazardous_cargo_code_unSerializer(serializers.ModelSerializer):
             )
 
 
-class intellectualSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.intellectual
-        fields = (
-            'guid',
-            'from_date',
-            'to_date',
-            'modify_date',
+class nsi_intellectual
             'code',
             'description',
             'inn',
@@ -392,136 +247,66 @@ class intellectualSerializer(serializers.ModelSerializer):
             )
 
 
-class intellectual_documentsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.intellectual_documents
-        fields = (
-            'guid',
-            'from_date',
-            'to_date',
-            'modify_date',
+class nsi_intellectual_documents
             'code',
             'document',
             'document_date',
             )
 
 
-class intellectual_trade_marksSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.intellectual_trade_marks
-        fields = (
-            'guid',
-            'from_date',
-            'to_date',
-            'modify_date',
+class nsi_intellectual_trade_marks
             'code',
             'description',
             'picture_file_name',
             )
 
 
-class mntSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.mnt
-        fields = (
-            'guid',
-            'from_date',
-            'to_date',
-            'modify_date',
+class nsi_mnt
             'code',
             'name',
             )
 
 
-class movement_of_goods_featuresSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.movement_of_goods_features
-        fields = (
-            'guid',
-            'from_date',
-            'to_date',
-            'modify_date',
+class nsi_movement_of_goods_features
             'code',
             'name',
             )
 
 
-class packageSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.package
-        fields = (
-            'guid',
-            'from_date',
-            'to_date',
-            'modify_date',
+class nsi_package
             'code',
             'name',
             'name_eng',
             )
 
 
-class package_typeSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.package_type
-        fields = (
-            'guid',
-            'from_date',
-            'to_date',
-            'modify_date',
+class nsi_package_type
             'code',
             'name',
             )
 
 
-class payment_codeSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.payment_code
-        fields = (
-            'guid',
-            'from_date',
-            'to_date',
-            'modify_date',
+class nsi_payment_code
             'code',
             'name',
             )
 
 
-class payment_termsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.payment_terms
-        fields = (
-            'guid',
-            'from_date',
-            'to_date',
-            'modify_date',
+class nsi_payment_terms
             'code',
             'description',
             'month_count',
             )
 
 
-class payment_way_codeSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.payment_way_code
-        fields = (
-            'guid',
-            'from_date',
-            'to_date',
-            'modify_date',
+class nsi_payment_way_code
             'country_ab2',
             'code',
             'name',
             )
 
 
-class personal_document_kindSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.personal_document_kind
-        fields = (
-            'guid',
-            'from_date',
-            'to_date',
-            'modify_date',
+class nsi_personal_document_kind
             'code',
             'name',
             'abbr',
@@ -531,14 +316,7 @@ class personal_document_kindSerializer(serializers.ModelSerializer):
             )
 
 
-class personal_document_kind_155Serializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.personal_document_kind_155
-        fields = (
-            'guid',
-            'from_date',
-            'to_date',
-            'modify_date',
+class nsi_personal_document_kind_155
             'country_code',
             'doc_type_code',
             'code',
@@ -547,27 +325,13 @@ class personal_document_kind_155Serializer(serializers.ModelSerializer):
             )
 
 
-class pi_usageSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.pi_usage
-        fields = (
-            'guid',
-            'from_date',
-            'to_date',
-            'modify_date',
+class nsi_pi_usage
             'code',
             'description',
             )
 
 
-class preferences_kindSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.preferences_kind
-        fields = (
-            'guid',
-            'from_date',
-            'to_date',
-            'modify_date',
+class nsi_preferences_kind
             'code',
             'apply_to',
             'name',
@@ -581,14 +345,7 @@ class preferences_kindSerializer(serializers.ModelSerializer):
             )
 
 
-class rw_countriesSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.rw_countries
-        fields = (
-            'guid',
-            'from_date',
-            'to_date',
-            'modify_date',
+class nsi_rw_countries
             'rw_country_code',
             'name',
             'abbr',
@@ -599,28 +356,14 @@ class rw_countriesSerializer(serializers.ModelSerializer):
             )
 
 
-class rw_roadsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.rw_roads
-        fields = (
-            'guid',
-            'from_date',
-            'to_date',
-            'modify_date',
+class nsi_rw_roads
             'road_code',
             'name',
             'abbr',
             )
 
 
-class rw_stationsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.rw_stations
-        fields = (
-            'guid',
-            'from_date',
-            'to_date',
-            'modify_date',
+class nsi_rw_stations
             'code5',
             'code',
             'name',
@@ -631,14 +374,7 @@ class rw_stationsSerializer(serializers.ModelSerializer):
             )
 
 
-class rw_stations_customsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.rw_stations_customs
-        fields = (
-            'guid',
-            'from_date',
-            'to_date',
-            'modify_date',
+class nsi_rw_stations_customs
             'code5',
             'code',
             'name',
@@ -649,14 +385,15 @@ class rw_stations_customsSerializer(serializers.ModelSerializer):
             )
 
 
-class stations_foreign_linksSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.stations_foreign_links
-        fields = (
-            'guid',
-            'from_date',
-            'to_date',
-            'modify_date',
+class nsi_sea_ports
+            'country',
+            'code',
+            'name',
+            'coordinates',
+            )
+
+
+class nsi_stations_foreign_links
             'code1',
             'name1',
             'country1',
@@ -666,82 +403,63 @@ class stations_foreign_linksSerializer(serializers.ModelSerializer):
             )
 
 
-class transit_measures_of_ensuringSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.transit_measures_of_ensuring
-        fields = (
-            'guid',
-            'from_date',
-            'to_date',
-            'modify_date',
+class nsi_tnved
+            'code',
+            'parent',
+            'description',
+            'iscode',
+            'short_description',
+            'unit_code',
+            )
+
+
+class nsi_tnved_14
+            'code',
+            'code11',
+            'code12',
+            'code13',
+            'code14',
+            'name11',
+            'name12',
+            'name13',
+            'name14',
+            )
+
+
+class nsi_transit_measures_of_ensuring
             'code',
             'description',
             )
 
 
-class transport_kindSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.transport_kind
-        fields = (
-            'guid',
-            'from_date',
-            'to_date',
-            'modify_date',
+class nsi_transport_kind
             'code',
             'description',
             )
 
 
-class type_of_vehiclesSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.type_of_vehicles
-        fields = (
-            'guid',
-            'from_date',
-            'to_date',
-            'modify_date',
+class nsi_type_of_vehicles
             'code',
             'description',
             'comment',
             )
 
 
-class unitSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.unit
-        fields = (
-            'guid',
-            'from_date',
-            'to_date',
-            'modify_date',
+class nsi_unit
             'code',
             'abbr',
             'description',
             )
 
 
-class vmtp_countrySerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.vmtp_country
-        fields = (
-            'guid',
-            'from_date',
-            'to_date',
-            'modify_date',
+class nsi_vmtp_country
             'vmtp_code',
             'country_code',
             'name',
             )
 
 
-class warehouse_customsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.warehouse_customs
-        fields = (
-            'guid',
-            'from_date',
-            'to_date',
-            'modify_date',
+class nsi_warehouse_customs
             'country_ab2',
             'customs_code',
             'license_number',
@@ -760,14 +478,7 @@ class warehouse_customsSerializer(serializers.ModelSerializer):
             )
 
 
-class warehouse_temporarySerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.warehouse_temporary
-        fields = (
-            'guid',
-            'from_date',
-            'to_date',
-            'modify_date',
+class nsi_warehouse_temporary
             'country_ab2',
             'customs_code',
             'license_number',
@@ -783,4 +494,3 @@ class warehouse_temporarySerializer(serializers.ModelSerializer):
             'transport_kind',
             'is_exciz',
             'warehouse_type',
-            )

@@ -1,6 +1,6 @@
 #! /bin/bash
 #создание файла сериализации модулей (erializers.py) по input_struct.txt
-sed -f nsi_mass.sed nsi_input_tables.txt | 
+sed -f nsi_refs.sed input_nsi_tables.txt | 
 sed "s/'@airports_rus'/''/" | 
 sed "s/'@ati_cities'/''/" | 
 sed "s/'@ati_customs_map'/''/" | 

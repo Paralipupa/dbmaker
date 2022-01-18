@@ -7,6 +7,7 @@
  key         | character varying(255)      |           |          | 
  id          | integer                     |           | not null | nextval('nsi_airports_rus_id_seq'::regclass)
  guid        | character varying(36)       |           |          | NULL::character varying
+ hash        | character varying(40)       |           |          | NULL::character varying
  from_date   | timestamp without time zone |           |          | 
  to_date     | timestamp without time zone |           |          | 
  modify_date | timestamp without time zone |           |          | 
@@ -25,6 +26,7 @@ Indexes:
  key         | character varying           |           |          | 
  id          | integer                     |           | not null | nextval('nsi_ati_cities_id_seq'::regclass)
  guid        | character varying(36)       |           |          | NULL::character varying
+ hash        | character varying(40)       |           |          | NULL::character varying
  from_date   | timestamp without time zone |           |          | 
  to_date     | timestamp without time zone |           |          | 
  modify_date | timestamp without time zone |           |          | 
@@ -42,6 +44,7 @@ Indexes:
  key          | character varying(8)        |           |          | 
  id           | integer                     |           | not null | nextval('nsi_ati_customs_map_id_seq'::regclass)
  guid         | character varying(36)       |           |          | NULL::character varying
+ hash         | character varying(40)       |           |          | NULL::character varying
  from_date    | timestamp without time zone |           |          | 
  to_date      | timestamp without time zone |           |          | 
  modify_date  | timestamp without time zone |           |          | 
@@ -56,6 +59,7 @@ Indexes:
  key         | character varying           |           |          | 
  id          | integer                     |           | not null | nextval('nsi_car_type_id_seq'::regclass)
  guid        | character varying(36)       |           |          | NULL::character varying
+ hash        | character varying(40)       |           |          | NULL::character varying
  from_date   | timestamp without time zone |           |          | 
  to_date     | timestamp without time zone |           |          | 
  modify_date | timestamp without time zone |           |          | 
@@ -70,22 +74,12 @@ Indexes:
  key         | character varying(3)        |           |          | 
  id          | integer                     |           | not null | nextval('nsi_color_id_seq'::regclass)
  guid        | character varying(36)       |           |          | NULL::character varying
+ hash        | character varying(40)       |           |          | NULL::character varying
  from_date   | timestamp without time zone |           |          | 
  to_date     | timestamp without time zone |           |          | 
  modify_date | timestamp without time zone |           |          | 
 Indexes:
     "nsi_color_pkey" PRIMARY KEY, btree (id)
-
-                                       Table "public.nsi_common_info"
-   Column    |           Type           | Collation | Nullable |                   Default                   
--------------+--------------------------+-----------+----------+---------------------------------------------
- id          | integer                  |           | not null | nextval('nsi_common_info_id_seq'::regclass)
- guid        | character varying(36)    |           | not null | 
- from_date   | timestamp with time zone |           |          | 
- to_date     | timestamp with time zone |           |          | 
- modify_date | timestamp with time zone |           |          | 
-Indexes:
-    "nsi_common_info_pkey" PRIMARY KEY, btree (id)
 
                                           Table "public.nsi_countries"
      Column     |            Type             | Collation | Nullable |                  Default                  
@@ -100,6 +94,7 @@ Indexes:
  key            | character varying(3)        |           |          | 
  id             | integer                     |           | not null | nextval('nsi_countries_id_seq'::regclass)
  guid           | character varying(36)       |           |          | NULL::character varying
+ hash           | character varying(40)       |           |          | NULL::character varying
  from_date      | timestamp without time zone |           |          | 
  to_date        | timestamp without time zone |           |          | 
  modify_date    | timestamp without time zone |           |          | 
@@ -116,6 +111,7 @@ Indexes:
  key         | character varying(3)        |           |          | 
  id          | integer                     |           | not null | nextval('nsi_currency_code_id_seq'::regclass)
  guid        | character varying(36)       |           |          | NULL::character varying
+ hash        | character varying(40)       |           |          | NULL::character varying
  from_date   | timestamp without time zone |           |          | 
  to_date     | timestamp without time zone |           |          | 
  modify_date | timestamp without time zone |           |          | 
@@ -137,6 +133,7 @@ Indexes:
  key          | character varying(8)        |           |          | 
  id           | integer                     |           | not null | nextval('nsi_customs_id_seq'::regclass)
  guid         | character varying(36)       |           |          | NULL::character varying
+ hash         | character varying(40)       |           |          | NULL::character varying
  to_date      | timestamp without time zone |           |          | 
  modify_date  | timestamp without time zone |           |          | 
 Indexes:
@@ -151,13 +148,14 @@ Indexes:
  ced_name       | character varying(50)       |           |          | 
  transport_kind | text                        |           |          | 
  notes          | character varying(255)      |           |          | 
- order          | character varying(255)      |           |          | 
+ order_number   | character varying(255)      |           |          | 
  order_date     | timestamp without time zone |           |          | 
  from_date      | timestamp without time zone |           |          | 
  to_date        | timestamp without time zone |           |          | 
  key            | character varying           |           |          | 
  id             | integer                     |           | not null | nextval('nsi_customs_ced_id_seq'::regclass)
  guid           | character varying(36)       |           |          | NULL::character varying
+ hash           | character varying(40)       |           |          | NULL::character varying
  modify_date    | timestamp without time zone |           |          | 
 Indexes:
     "nsi_customs_ced_pkey" PRIMARY KEY, btree (id)
@@ -174,6 +172,7 @@ Indexes:
  key                 | character varying(8)        |           |          | 
  id                  | integer                     |           | not null | nextval('nsi_customs_hierarchy_id_seq'::regclass)
  guid                | character varying(36)       |           |          | NULL::character varying
+ hash                | character varying(40)       |           |          | NULL::character varying
  from_date           | timestamp without time zone |           |          | 
  to_date             | timestamp without time zone |           |          | 
  modify_date         | timestamp without time zone |           |          | 
@@ -188,6 +187,7 @@ Indexes:
  key         | character varying(4)        |           |          | 
  id          | integer                     |           | not null | nextval('nsi_customs_payments_kind_id_seq'::regclass)
  guid        | character varying(36)       |           |          | NULL::character varying
+ hash        | character varying(40)       |           |          | NULL::character varying
  from_date   | timestamp without time zone |           |          | 
  to_date     | timestamp without time zone |           |          | 
  modify_date | timestamp without time zone |           |          | 
@@ -202,6 +202,7 @@ Indexes:
  key         | character varying(2)        |           |          | 
  id          | integer                     |           | not null | nextval('nsi_customs_procedures_kind_id_seq'::regclass)
  guid        | character varying(36)       |           |          | NULL::character varying
+ hash        | character varying(40)       |           |          | NULL::character varying
  from_date   | timestamp without time zone |           |          | 
  to_date     | timestamp without time zone |           |          | 
  modify_date | timestamp without time zone |           |          | 
@@ -215,13 +216,14 @@ Indexes:
  name         | character varying(50)       |           |          | 
  region       | text                        |           |          | 
  region_okato | character varying(255)      |           |          | 
- order        | character varying(255)      |           |          | 
+ order_number | character varying(255)      |           |          | 
  order_date   | timestamp without time zone |           |          | 
  from_date    | timestamp without time zone |           |          | 
  to_date      | timestamp without time zone |           |          | 
  key          | character varying           |           |          | 
  id           | integer                     |           | not null | nextval('nsi_customs_region_id_seq'::regclass)
  guid         | character varying(36)       |           |          | NULL::character varying
+ hash         | character varying(40)       |           |          | NULL::character varying
  modify_date  | timestamp without time zone |           |          | 
 Indexes:
     "nsi_customs_region_pkey" PRIMARY KEY, btree (id)
@@ -234,6 +236,7 @@ Indexes:
  key         | character varying(1)        |           |          | 
  id          | integer                     |           | not null | nextval('nsi_customs_value_determination_kind_id_seq'::regclass)
  guid        | character varying(36)       |           |          | NULL::character varying
+ hash        | character varying(40)       |           |          | NULL::character varying
  from_date   | timestamp without time zone |           |          | 
  to_date     | timestamp without time zone |           |          | 
  modify_date | timestamp without time zone |           |          | 
@@ -248,6 +251,7 @@ Indexes:
  key         | character varying(2)        |           |          | 
  id          | integer                     |           | not null | nextval('nsi_deal_feature_id_seq'::regclass)
  guid        | character varying(36)       |           |          | NULL::character varying
+ hash        | character varying(40)       |           |          | NULL::character varying
  from_date   | timestamp without time zone |           |          | 
  to_date     | timestamp without time zone |           |          | 
  modify_date | timestamp without time zone |           |          | 
@@ -262,6 +266,7 @@ Indexes:
  key         | character varying(3)        |           |          | 
  id          | integer                     |           | not null | nextval('nsi_deal_nature_id_seq'::regclass)
  guid        | character varying(36)       |           |          | NULL::character varying
+ hash        | character varying(40)       |           |          | NULL::character varying
  from_date   | timestamp without time zone |           |          | 
  to_date     | timestamp without time zone |           |          | 
  modify_date | timestamp without time zone |           |          | 
@@ -277,6 +282,7 @@ Indexes:
  key         | character varying(3)        |           |          | 
  id          | integer                     |           | not null | nextval('nsi_delivery_terms_id_seq'::regclass)
  guid        | character varying(36)       |           |          | NULL::character varying
+ hash        | character varying(40)       |           |          | NULL::character varying
  from_date   | timestamp without time zone |           |          | 
  to_date     | timestamp without time zone |           |          | 
  modify_date | timestamp without time zone |           |          | 
@@ -306,54 +312,6 @@ Indexes:
  from_date      | timestamp without time zone |           |          | 
  end_date       | timestamp without time zone |           |          | 
 
-                       Table "public.nsi_dutyfree"
-     Column     |          Type          | Collation | Nullable | Default 
-----------------+------------------------+-----------+----------+---------
- customs_code   | character varying(255) |           |          | 
- name           | character varying(255) |           |          | 
- nsved          | character varying(255) |           |          | 
- license_date   | character varying(255) |           |          | 
- owner          | character varying(255) |           |          | 
- offise_address | character varying(255) |           |          | 
- inn            | character varying(255) |           |          | 
- address        | character varying(255) |           |          | 
- area           | character varying(255) |           |          | 
- kategor        | character varying(255) |           |          | 
- obesp          | character varying(255) |           |          | 
- addinfo        | character varying(255) |           |          | 
- key            | text                   |           |          | 
-
-                            Table "public.nsi_ecop"
-     Column     |            Type             | Collation | Nullable | Default 
-----------------+-----------------------------+-----------+----------+---------
- country_ab2    | character varying(2)        |           |          | 
- license_number | character varying(25)       |           |          | 
- pr_per         | character varying(1)        |           |          | 
- n_blank        | character varying(10)       |           |          | 
- from_date      | timestamp without time zone |           |          | 
- to_date        | timestamp without time zone |           |          | 
- owner          | character varying(255)      |           |          | 
- opf_vl         | character varying(5)        |           |          | 
- post           | character varying(9)        |           |          | 
- region         | character varying(50)       |           |          | 
- city           | character varying(35)       |           |          | 
- street         | character varying(50)       |           |          | 
- phone          | character varying(100)      |           |          | 
- email          | character varying(100)      |           |          | 
- website        | character varying(100)      |           |          | 
- ogrn           | character varying(15)       |           |          | 
- inn            | character varying(20)       |           |          | 
- okpo           | character varying(10)       |           |          | 
- osp            | character varying(1)        |           |          | 
- change_date    | timestamp without time zone |           |          | 
- doc_number_beg | character varying(20)       |           |          | 
- doc_date_beg   | timestamp without time zone |           |          | 
- doc_number_end | character varying(20)       |           |          | 
- doc_date_end   | timestamp without time zone |           |          | 
- doc_number_sus | character varying(20)       |           |          | 
- doc_date_sus   | timestamp without time zone |           |          | 
- key            | text                        |           |          | 
-
                                          Table "public.nsi_edi_container_type"
    Column    |            Type             | Collation | Nullable |                      Default                       
 -------------+-----------------------------+-----------+----------+----------------------------------------------------
@@ -365,6 +323,7 @@ Indexes:
  key         | character varying           |           |          | 
  id          | integer                     |           | not null | nextval('nsi_edi_container_type_id_seq'::regclass)
  guid        | character varying(36)       |           |          | NULL::character varying
+ hash        | character varying(40)       |           |          | NULL::character varying
  from_date   | timestamp without time zone |           |          | 
  to_date     | timestamp without time zone |           |          | 
  modify_date | timestamp without time zone |           |          | 
@@ -380,6 +339,7 @@ Indexes:
  key         | character varying(2)        |           |          | 
  id          | integer                     |           | not null | nextval('nsi_edi_wagon_type_id_seq'::regclass)
  guid        | character varying(36)       |           |          | NULL::character varying
+ hash        | character varying(40)       |           |          | NULL::character varying
  from_date   | timestamp without time zone |           |          | 
  to_date     | timestamp without time zone |           |          | 
  modify_date | timestamp without time zone |           |          | 
@@ -394,6 +354,7 @@ Indexes:
  key         | character varying(2)        |           |          | 
  id          | integer                     |           | not null | nextval('nsi_edi_weight_definition_mode_id_seq'::regclass)
  guid        | character varying(36)       |           |          | NULL::character varying
+ hash        | character varying(40)       |           |          | NULL::character varying
  from_date   | timestamp without time zone |           |          | 
  to_date     | timestamp without time zone |           |          | 
  modify_date | timestamp without time zone |           |          | 
@@ -408,6 +369,7 @@ Indexes:
  key         | character varying(2)        |           |          | 
  id          | integer                     |           | not null | nextval('nsi_ensure_payment_code_id_seq'::regclass)
  guid        | character varying(36)       |           |          | NULL::character varying
+ hash        | character varying(40)       |           |          | NULL::character varying
  from_date   | timestamp without time zone |           |          | 
  to_date     | timestamp without time zone |           |          | 
  modify_date | timestamp without time zone |           |          | 
@@ -433,6 +395,7 @@ Indexes:
  key         | character varying(2)        |           |          | 
  id          | integer                     |           | not null | nextval('nsi_forms_of_payment_id_seq'::regclass)
  guid        | character varying(36)       |           |          | NULL::character varying
+ hash        | character varying(40)       |           |          | NULL::character varying
  from_date   | timestamp without time zone |           |          | 
  to_date     | timestamp without time zone |           |          | 
  modify_date | timestamp without time zone |           |          | 
@@ -466,6 +429,7 @@ Indexes:
  key         | character varying(3)        |           |          | 
  id          | integer                     |           | not null | nextval('nsi_hazardous_cargo_code_imo_id_seq'::regclass)
  guid        | character varying(36)       |           |          | NULL::character varying
+ hash        | character varying(40)       |           |          | NULL::character varying
  from_date   | timestamp without time zone |           |          | 
  to_date     | timestamp without time zone |           |          | 
  modify_date | timestamp without time zone |           |          | 
@@ -482,6 +446,7 @@ Indexes:
  key                 | character varying(4)        |           |          | 
  id                  | integer                     |           | not null | nextval('nsi_hazardous_cargo_code_un_id_seq'::regclass)
  guid                | character varying(36)       |           |          | NULL::character varying
+ hash                | character varying(40)       |           |          | NULL::character varying
  from_date           | timestamp without time zone |           |          | 
  to_date             | timestamp without time zone |           |          | 
  modify_date         | timestamp without time zone |           |          | 
@@ -507,6 +472,7 @@ Indexes:
  key                | character varying           |           |          | 
  id                 | integer                     |           | not null | nextval('nsi_intellectual_id_seq'::regclass)
  guid               | character varying(36)       |           |          | NULL::character varying
+ hash               | character varying(40)       |           |          | NULL::character varying
  from_date          | timestamp without time zone |           |          | 
  to_date            | timestamp without time zone |           |          | 
  modify_date        | timestamp without time zone |           |          | 
@@ -522,6 +488,7 @@ Indexes:
  key           | character varying(25)       |           |          | 
  id            | integer                     |           | not null | nextval('nsi_intellectual_documents_id_seq'::regclass)
  guid          | character varying(36)       |           |          | NULL::character varying
+ hash          | character varying(40)       |           |          | NULL::character varying
  from_date     | timestamp without time zone |           |          | 
  to_date       | timestamp without time zone |           |          | 
  modify_date   | timestamp without time zone |           |          | 
@@ -537,26 +504,12 @@ Indexes:
  key               | text                        |           |          | 
  id                | integer                     |           | not null | nextval('nsi_intellectual_trade_marks_id_seq'::regclass)
  guid              | character varying(36)       |           |          | NULL::character varying
+ hash              | character varying(40)       |           |          | NULL::character varying
  from_date         | timestamp without time zone |           |          | 
  to_date           | timestamp without time zone |           |          | 
  modify_date       | timestamp without time zone |           |          | 
 Indexes:
     "nsi_intellectual_trade_marks_pkey" PRIMARY KEY, btree (id)
-
-                                       Table "public.nsi_keymap"
-   Column    |           Type           | Collation | Nullable |                Default                 
--------------+--------------------------+-----------+----------+----------------------------------------
- id          | integer                  |           | not null | nextval('nsi_keymap_id_seq'::regclass)
- name        | character varying(255)   |           | not null | 
- key         | character varying(255)   |           | not null | 
- guid        | character varying(36)    |           | not null | 
- modify_date | timestamp with time zone |           |          | 
- ischeck     | boolean                  |           | not null | 
- hash        | character varying(40)    |           |          | 
-Indexes:
-    "nsi_keymap_pkey" PRIMARY KEY, btree (id)
-    "nsi_keymap_guid_81e262_idx" btree (guid)
-    "nsi_keymap_hash_c07eb1_idx" btree (hash)
 
                                          Table "public.nsi_mnt"
    Column    |            Type             | Collation | Nullable |               Default               
@@ -566,6 +519,7 @@ Indexes:
  key         | character varying(2)        |           |          | 
  id          | integer                     |           | not null | nextval('nsi_mnt_id_seq'::regclass)
  guid        | character varying(36)       |           |          | NULL::character varying
+ hash        | character varying(40)       |           |          | NULL::character varying
  from_date   | timestamp without time zone |           |          | 
  to_date     | timestamp without time zone |           |          | 
  modify_date | timestamp without time zone |           |          | 
@@ -580,6 +534,7 @@ Indexes:
  key         | character varying(3)        |           |          | 
  id          | integer                     |           | not null | nextval('nsi_movement_of_goods_features_id_seq'::regclass)
  guid        | character varying(36)       |           |          | NULL::character varying
+ hash        | character varying(40)       |           |          | NULL::character varying
  from_date   | timestamp without time zone |           |          | 
  to_date     | timestamp without time zone |           |          | 
  modify_date | timestamp without time zone |           |          | 
@@ -595,6 +550,7 @@ Indexes:
  key         | character varying(2)        |           |          | 
  id          | integer                     |           | not null | nextval('nsi_package_id_seq'::regclass)
  guid        | character varying(36)       |           |          | NULL::character varying
+ hash        | character varying(40)       |           |          | NULL::character varying
  from_date   | timestamp without time zone |           |          | 
  to_date     | timestamp without time zone |           |          | 
  modify_date | timestamp without time zone |           |          | 
@@ -609,6 +565,7 @@ Indexes:
  key         | character varying(1)        |           |          | 
  id          | integer                     |           | not null | nextval('nsi_package_type_id_seq'::regclass)
  guid        | character varying(36)       |           |          | NULL::character varying
+ hash        | character varying(40)       |           |          | NULL::character varying
  from_date   | timestamp without time zone |           |          | 
  to_date     | timestamp without time zone |           |          | 
  modify_date | timestamp without time zone |           |          | 
@@ -623,6 +580,7 @@ Indexes:
  key         | character varying(2)        |           |          | 
  id          | integer                     |           | not null | nextval('nsi_payment_code_id_seq'::regclass)
  guid        | character varying(36)       |           |          | NULL::character varying
+ hash        | character varying(40)       |           |          | NULL::character varying
  from_date   | timestamp without time zone |           |          | 
  to_date     | timestamp without time zone |           |          | 
  modify_date | timestamp without time zone |           |          | 
@@ -638,6 +596,7 @@ Indexes:
  key         | character varying(2)        |           |          | 
  id          | integer                     |           | not null | nextval('nsi_payment_terms_id_seq'::regclass)
  guid        | character varying(36)       |           |          | NULL::character varying
+ hash        | character varying(40)       |           |          | NULL::character varying
  from_date   | timestamp without time zone |           |          | 
  to_date     | timestamp without time zone |           |          | 
  modify_date | timestamp without time zone |           |          | 
@@ -653,6 +612,7 @@ Indexes:
  key         | character varying           |           |          | 
  id          | integer                     |           | not null | nextval('nsi_payment_way_code_id_seq'::regclass)
  guid        | character varying(36)       |           |          | NULL::character varying
+ hash        | character varying(40)       |           |          | NULL::character varying
  from_date   | timestamp without time zone |           |          | 
  to_date     | timestamp without time zone |           |          | 
  modify_date | timestamp without time zone |           |          | 
@@ -671,6 +631,7 @@ Indexes:
  key         | character varying(2)        |           |          | 
  id          | integer                     |           | not null | nextval('nsi_personal_document_kind_id_seq'::regclass)
  guid        | character varying(36)       |           |          | NULL::character varying
+ hash        | character varying(40)       |           |          | NULL::character varying
  from_date   | timestamp without time zone |           |          | 
  to_date     | timestamp without time zone |           |          | 
  modify_date | timestamp without time zone |           |          | 
@@ -688,6 +649,7 @@ Indexes:
  key              | character varying(7)        |           |          | 
  id               | integer                     |           | not null | nextval('nsi_personal_document_kind_155_id_seq'::regclass)
  guid             | character varying(36)       |           |          | NULL::character varying
+ hash             | character varying(40)       |           |          | NULL::character varying
  from_date        | timestamp without time zone |           |          | 
  to_date          | timestamp without time zone |           |          | 
  modify_date      | timestamp without time zone |           |          | 
@@ -702,6 +664,7 @@ Indexes:
  key         | character varying(2)        |           |          | 
  id          | integer                     |           | not null | nextval('nsi_pi_usage_id_seq'::regclass)
  guid        | character varying(36)       |           |          | NULL::character varying
+ hash        | character varying(40)       |           |          | NULL::character varying
  from_date   | timestamp without time zone |           |          | 
  to_date     | timestamp without time zone |           |          | 
  modify_date | timestamp without time zone |           |          | 
@@ -724,6 +687,7 @@ Indexes:
  key                        | character varying           |           |          | 
  id                         | integer                     |           | not null | nextval('nsi_preferences_kind_id_seq'::regclass)
  guid                       | character varying(36)       |           |          | NULL::character varying
+ hash                       | character varying(40)       |           |          | NULL::character varying
  from_date                  | timestamp without time zone |           |          | 
  to_date                    | timestamp without time zone |           |          | 
  modify_date                | timestamp without time zone |           |          | 
@@ -743,6 +707,7 @@ Indexes:
  key                 | character varying(255)      |           |          | 
  id                  | integer                     |           | not null | nextval('nsi_rw_countries_id_seq'::regclass)
  guid                | character varying(36)       |           |          | NULL::character varying
+ hash                | character varying(40)       |           |          | NULL::character varying
  from_date           | timestamp without time zone |           |          | 
  to_date             | timestamp without time zone |           |          | 
  modify_date         | timestamp without time zone |           |          | 
@@ -758,6 +723,7 @@ Indexes:
  key         | character varying(255)      |           |          | 
  id          | integer                     |           | not null | nextval('nsi_rw_roads_id_seq'::regclass)
  guid        | character varying(36)       |           |          | NULL::character varying
+ hash        | character varying(40)       |           |          | NULL::character varying
  from_date   | timestamp without time zone |           |          | 
  to_date     | timestamp without time zone |           |          | 
  modify_date | timestamp without time zone |           |          | 
@@ -777,6 +743,7 @@ Indexes:
  key          | character varying           |           |          | 
  id           | integer                     |           | not null | nextval('nsi_rw_stations_id_seq'::regclass)
  guid         | character varying(36)       |           |          | NULL::character varying
+ hash         | character varying(40)       |           |          | NULL::character varying
  from_date    | timestamp without time zone |           |          | 
  to_date      | timestamp without time zone |           |          | 
  modify_date  | timestamp without time zone |           |          | 
@@ -796,6 +763,7 @@ Indexes:
  key          | character varying           |           |          | 
  id           | integer                     |           | not null | nextval('nsi_rw_stations_customs_id_seq'::regclass)
  guid         | character varying(36)       |           |          | NULL::character varying
+ hash         | character varying(40)       |           |          | NULL::character varying
  from_date    | timestamp without time zone |           |          | 
  to_date      | timestamp without time zone |           |          | 
  modify_date  | timestamp without time zone |           |          | 
@@ -822,24 +790,12 @@ Indexes:
  key         | character varying           |           |          | 
  id          | integer                     |           | not null | nextval('nsi_stations_foreign_links_id_seq'::regclass)
  guid        | character varying(36)       |           |          | NULL::character varying
+ hash        | character varying(40)       |           |          | NULL::character varying
  from_date   | timestamp without time zone |           |          | 
  to_date     | timestamp without time zone |           |          | 
  modify_date | timestamp without time zone |           |          | 
 Indexes:
     "nsi_stations_foreign_links_pkey" PRIMARY KEY, btree (id)
-
-                                       Table "public.nsi_tablemap"
-   Column    |           Type           | Collation | Nullable |                 Default                  
--------------+--------------------------+-----------+----------+------------------------------------------
- id          | integer                  |           | not null | nextval('nsi_tablemap_id_seq'::regclass)
- name        | character varying(50)    |           | not null | 
- description | character varying(255)   |           | not null | 
- modify_date | timestamp with time zone |           |          | 
- ischeck     | boolean                  |           | not null | 
- hash        | character varying(40)    |           |          | 
-Indexes:
-    "nsi_tablemap_pkey" PRIMARY KEY, btree (id)
-    "nsi_tablemap_name_b200f486_uniq" UNIQUE CONSTRAINT, btree (name)
 
                           Table "public.nsi_tnved"
       Column       |          Type          | Collation | Nullable | Default 
@@ -877,6 +833,7 @@ Indexes:
  key         | character varying(2)        |           |          | 
  id          | integer                     |           | not null | nextval('nsi_transit_measures_of_ensuring_id_seq'::regclass)
  guid        | character varying(36)       |           |          | NULL::character varying
+ hash        | character varying(40)       |           |          | NULL::character varying
  from_date   | timestamp without time zone |           |          | 
  to_date     | timestamp without time zone |           |          | 
  modify_date | timestamp without time zone |           |          | 
@@ -891,6 +848,7 @@ Indexes:
  key         | character varying(2)        |           |          | 
  id          | integer                     |           | not null | nextval('nsi_transport_kind_id_seq'::regclass)
  guid        | character varying(36)       |           |          | NULL::character varying
+ hash        | character varying(40)       |           |          | NULL::character varying
  from_date   | timestamp without time zone |           |          | 
  to_date     | timestamp without time zone |           |          | 
  modify_date | timestamp without time zone |           |          | 
@@ -906,6 +864,7 @@ Indexes:
  key         | character varying(3)        |           |          | 
  id          | integer                     |           | not null | nextval('nsi_type_of_vehicles_id_seq'::regclass)
  guid        | character varying(36)       |           |          | NULL::character varying
+ hash        | character varying(40)       |           |          | NULL::character varying
  from_date   | timestamp without time zone |           |          | 
  to_date     | timestamp without time zone |           |          | 
  modify_date | timestamp without time zone |           |          | 
@@ -921,6 +880,7 @@ Indexes:
  key         | character varying(3)        |           |          | 
  id          | integer                     |           | not null | nextval('nsi_unit_id_seq'::regclass)
  guid        | character varying(36)       |           |          | NULL::character varying
+ hash        | character varying(40)       |           |          | NULL::character varying
  from_date   | timestamp without time zone |           |          | 
  to_date     | timestamp without time zone |           |          | 
  modify_date | timestamp without time zone |           |          | 
@@ -936,6 +896,7 @@ Indexes:
  key          | character varying(3)        |           |          | 
  id           | integer                     |           | not null | nextval('nsi_vmtp_country_id_seq'::regclass)
  guid         | character varying(36)       |           |          | NULL::character varying
+ hash         | character varying(40)       |           |          | NULL::character varying
  from_date    | timestamp without time zone |           |          | 
  to_date      | timestamp without time zone |           |          | 
  modify_date  | timestamp without time zone |           |          | 
@@ -963,28 +924,12 @@ Indexes:
  key            | character varying           |           |          | 
  id             | integer                     |           | not null | nextval('nsi_warehouse_customs_id_seq'::regclass)
  guid           | character varying(36)       |           |          | NULL::character varying
+ hash           | character varying(40)       |           |          | NULL::character varying
  from_date      | timestamp without time zone |           |          | 
  to_date        | timestamp without time zone |           |          | 
  modify_date    | timestamp without time zone |           |          | 
 Indexes:
     "nsi_warehouse_customs_pkey" PRIMARY KEY, btree (id)
-
-                        Table "public.nsi_warehouse_free"
-      Column      |            Type             | Collation | Nullable | Default 
-------------------+-----------------------------+-----------+----------+---------
- country_ab2      | character varying(255)      |           |          | 
- doc_number       | character varying(255)      |           |          | 
- doc_date         | timestamp without time zone |           |          | 
- name             | character varying(255)      |           |          | 
- address          | text                        |           |          | 
- inn              | character varying(255)      |           |          | 
- area             | character varying(255)      |           |          | 
- customsauthority | character varying(255)      |           |          | 
- kindofactivity   | character varying(255)      |           |          | 
- addinfo          | character varying(255)      |           |          | 
- nsikey           | character varying(255)      |           |          | 
- active           | character varying(255)      |           |          | 
- key              | text                        |           |          | 
 
                                           Table "public.nsi_warehouse_temporary"
      Column     |            Type             | Collation | Nullable |                       Default                       
@@ -1007,6 +952,7 @@ Indexes:
  key            | character varying           |           |          | 
  id             | integer                     |           | not null | nextval('nsi_warehouse_temporary_id_seq'::regclass)
  guid           | character varying(36)       |           |          | NULL::character varying
+ hash           | character varying(40)       |           |          | NULL::character varying
  from_date      | timestamp without time zone |           |          | 
  to_date        | timestamp without time zone |           |          | 
  modify_date    | timestamp without time zone |           |          | 
