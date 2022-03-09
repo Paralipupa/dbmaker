@@ -3,7 +3,7 @@ s/[-+ ]\+//
 s/Column[ |a-zA-Z]\+//
 s/Table "public./class /
 s/"//
-/\(^class \)nsi_\(.*\)/s//\1\2Serializer(serializers.ModelSerializer):\n    id = serializers.CharField(source='guid')\n    class Meta:\n        model = models.\2\n        fields = (/
+/\(^class \)tk_\(.*\)/s//\1\2Serializer(NsiSerializer):\n    id = serializers.CharField(source='guid')\n    class Meta:\n        model = models.\2\n        fields = (/
 /^Indexes:.*/s///
 /.*PRIMARY KEY.*/s///
 /^id \+/s///

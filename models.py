@@ -1,83 +1,30 @@
 
 from django.db import models
-import hashlib
-from django.db.models import AutoField
+from nsi.models import NsiModel
 
-_hashit = lambda s: hashlib.sha1(s).hexdigest()
+class nsi_airports_rus(NsiModel):
+    @property
+    def table_name(self):
+        return 'tk_nsi_airports_rus'
+    @property
+    def title(self):
+        return ''
+    code_iata = models.CharField(blank=True, null=True, max_length=255)
+    name      = models.CharField(blank=True, null=True, max_length=255)
+    city      = models.CharField(blank=True, null=True, max_length=255)
+    key       = models.CharField(blank=True, null=True, max_length=255)
+    @property
+    def queries(self):
+            return ''
 
-class tablemap(models.Model):
-    name = models.CharField(max_length=50, blank=False, null=False)
-    description = models.CharField(max_length=255, blank=True, null=False)
-    modify_date = models.DateTimeField(blank=True, null=True)
-    ischeck     = models.BooleanField(default=False)
-    hash        = models.CharField(max_length=40, blank=True, null=True)
-    class Meta:
-        unique_together = ('name',)
 
-class keymap(models.Model):
-    name        = models.CharField(max_length=255, blank=True, null=False)
-    key         = models.CharField(max_length=255, blank=True, null=False)
-    guid        = models.CharField(max_length=36)
-    modify_date = models.DateTimeField(blank=True, null=True)
-    ischeck     = models.BooleanField(default=False)
-    hash        = models.CharField(blank=True, null=True, max_length=40)
-    class Meta:
-        indexes = [
-            models.Index(fields=['guid',]),
-            models.Index(fields=['hash',]),
-    ]
-
-class CommonInfo(models.Model):
-    guid        = models.CharField(max_length=36)
-    hash        = models.CharField(max_length=40, blank=True, null=True)
-    from_date   = models.DateTimeField(blank=True, null=True)
-    to_date     = models.DateTimeField(blank=True, null=True)
-    modify_date = models.DateTimeField(blank=True, null=True)
-    class Meta:
-        abstract = True
-
-class HashMixin(object):
-    def _get_hash(self):
-        hashed_fields = [str(getattr(self, field.name)) for field in self._meta.fields if
-                         not isinstance(field, AutoField) and field.attname != 'modify_date' and field.attname != 'order']
-        data = ",".join(hashed_fields)
-        return _hashit(data.encode('utf-8'))
-    hash_calculate = property(_get_hash)
-
-class airports_rus(HashMixin, CommonInfo):
-    code_iata   = models.CharField(blank=True, null=True, max_length=255)
-    name        = models.CharField(blank=True, null=True, max_length=255)
-    city        = models.CharField(blank=True, null=True, max_length=255)
-    key         = models.CharField(blank=True, null=True, max_length=255)
-
-class ati_cities(HashMixin, CommonInfo):
-    city_id     = models.IntegerField(blank=True, null=True)
-    region_id   = models.IntegerField(blank=True, null=True)
-    country_id  = models.IntegerField(blank=True, null=True)
-    city        = models.CharField(blank=True, null=True, max_length=255)
-    region      = models.CharField(blank=True, null=True, max_length=255)
-    country     = models.CharField(blank=True, null=True, max_length=255)
-    key         = models.CharField(blank=True, null=True, max_length=255)
-
-class ati_customs_map(HashMixin, CommonInfo):
-    country_code = models.CharField(blank=True, null=True, max_length=2)
-    customs_code = models.CharField(blank=True, null=True, max_length=8)
-    customs_city = models.CharField(blank=True, null=True, max_length=255)
-    ati_city     = models.CharField(blank=True, null=True, max_length=255)
-    ati_city_id  = models.IntegerField(blank=True, null=True)
-    key          = models.CharField(blank=True, null=True, max_length=8)
-
-class car_type(HashMixin, CommonInfo):
-    code        = models.TextField(blank=True, null=True)
-    name        = models.CharField(blank=True, null=True, max_length=20)
-    key         = models.CharField(blank=True, null=True, max_length=255)
-
-class color(HashMixin, CommonInfo):
-    code        = models.CharField(blank=True, null=True, max_length=3)
-    description = models.CharField(blank=True, null=True, max_length=20)
-    key         = models.CharField(blank=True, null=True, max_length=3)
-
-class countries(HashMixin, CommonInfo):
+class nsi_countries(NsiModel):
+    @property
+    def table_name(self):
+        return 'tk_nsi_countries'
+    @property
+    def title(self):
+        return ''
     abc2           = models.CharField(blank=True, null=True, max_length=2)
     abc3           = models.CharField(blank=True, null=True, max_length=3)
     code           = models.CharField(blank=True, null=True, max_length=3)
@@ -86,15 +33,37 @@ class countries(HashMixin, CommonInfo):
     name_eng       = models.CharField(blank=True, null=True, max_length=100)
     classification = models.TextField(blank=True, null=True)
     key            = models.CharField(blank=True, null=True, max_length=3)
+    @property
+    def queries(self):
+            return ''
 
-class currency_code(HashMixin, CommonInfo):
-    code        = models.CharField(blank=True, null=True, max_length=3)
-    abc3        = models.CharField(blank=True, null=True, max_length=3)
-    short_name  = models.CharField(blank=True, null=True, max_length=17)
-    name        = models.CharField(blank=True, null=True, max_length=255)
-    key         = models.CharField(blank=True, null=True, max_length=3)
 
-class customs(HashMixin, CommonInfo):
+class nsi_currency_code(NsiModel):
+    @property
+    def table_name(self):
+        return 'tk_nsi_currency_code'
+    @property
+    def title(self):
+        return ''
+    code       = models.CharField(blank=True, null=True, max_length=3)
+    abc3       = models.CharField(blank=True, null=True, max_length=3)
+    short_name = models.CharField(blank=True, null=True, max_length=17)
+    name       = models.CharField(blank=True, null=True, max_length=255)
+    from_DateField(blank=True, null=True)  = models.DateTimeField(blank=True, null=True)
+    to_DateField(blank=True, null=True)    = models.DateTimeField(blank=True, null=True)
+    key        = models.CharField(blank=True, null=True, max_length=3)
+    @property
+    def queries(self):
+            return ''
+
+
+class nsi_customs(NsiModel):
+    @property
+    def table_name(self):
+        return 'tk_nsi_customs'
+    @property
+    def title(self):
+        return ''
     country_code = models.CharField(blank=True, null=True, max_length=2)
     code         = models.CharField(blank=True, null=True, max_length=8)
     name         = models.CharField(blank=True, null=True, max_length=50)
@@ -103,9 +72,21 @@ class customs(HashMixin, CommonInfo):
     phone        = models.CharField(blank=True, null=True, max_length=20)
     oldcode      = models.CharField(blank=True, null=True, max_length=8)
     code5        = models.CharField(blank=True, null=True, max_length=5)
+    from_DateField(blank=True, null=True)    = models.DateTimeField(blank=True, null=True)
+    to_DateField(blank=True, null=True)      = models.DateTimeField(blank=True, null=True)
     key          = models.CharField(blank=True, null=True, max_length=8)
+    @property
+    def queries(self):
+            return ''
 
-class customs_ced(HashMixin, CommonInfo):
+
+class nsi_customs_ced(NsiModel):
+    @property
+    def table_name(self):
+        return 'tk_nsi_customs_ced'
+    @property
+    def title(self):
+        return ''
     code           = models.CharField(blank=True, null=True, max_length=8)
     name           = models.CharField(blank=True, null=True, max_length=50)
     code_ced       = models.CharField(blank=True, null=True, max_length=255)
@@ -113,10 +94,22 @@ class customs_ced(HashMixin, CommonInfo):
     transport_kind = models.TextField(blank=True, null=True)
     notes          = models.CharField(blank=True, null=True, max_length=255)
     order_number   = models.CharField(blank=True, null=True, max_length=255)
-    order_date     = models.DateTimeField(blank=True, null=True)
+    order_DateField(blank=True, null=True)     = models.DateTimeField(blank=True, null=True)
+    from_DateField(blank=True, null=True)      = models.DateTimeField(blank=True, null=True)
+    to_DateField(blank=True, null=True)        = models.DateTimeField(blank=True, null=True)
     key            = models.CharField(blank=True, null=True, max_length=255)
+    @property
+    def queries(self):
+            return ''
 
-class customs_hierarchy(HashMixin, CommonInfo):
+
+class nsi_customs_hierarchy(NsiModel):
+    @property
+    def table_name(self):
+        return 'tk_nsi_customs_hierarchy'
+    @property
+    def title(self):
+        return ''
     code                = models.CharField(blank=True, null=True, max_length=8)
     name                = models.CharField(blank=True, null=True, max_length=50)
     customs_code        = models.CharField(blank=True, null=True, max_length=255)
@@ -124,124 +117,183 @@ class customs_hierarchy(HashMixin, CommonInfo):
     customs_office_code = models.CharField(blank=True, null=True, max_length=255)
     customs_office_name = models.CharField(blank=True, null=True, max_length=50)
     key                 = models.CharField(blank=True, null=True, max_length=8)
+    @property
+    def queries(self):
+            return ''
 
-class customs_payments_kind(HashMixin, CommonInfo):
-    code        = models.CharField(blank=True, null=True, max_length=4)
-    name        = models.TextField(blank=True, null=True)
-    key         = models.CharField(blank=True, null=True, max_length=4)
 
-class customs_procedures_kind(HashMixin, CommonInfo):
-    code        = models.CharField(blank=True, null=True, max_length=2)
-    name        = models.CharField(blank=True, null=True, max_length=255)
-    key         = models.CharField(blank=True, null=True, max_length=2)
+class nsi_customs_payments_kind(NsiModel):
+    @property
+    def table_name(self):
+        return 'tk_nsi_customs_payments_kind'
+    @property
+    def title(self):
+        return ''
+    code      = models.CharField(blank=True, null=True, max_length=4)
+    name      = models.TextField(blank=True, null=True)
+    from_DateField(blank=True, null=True) = models.DateTimeField(blank=True, null=True)
+    to_DateField(blank=True, null=True)   = models.DateTimeField(blank=True, null=True)
+    key       = models.CharField(blank=True, null=True, max_length=4)
+    @property
+    def queries(self):
+            return ''
 
-class customs_region(HashMixin, CommonInfo):
+
+class nsi_customs_procedures_kind(NsiModel):
+    @property
+    def table_name(self):
+        return 'tk_nsi_customs_procedures_kind'
+    @property
+    def title(self):
+        return ''
+    code      = models.CharField(blank=True, null=True, max_length=2)
+    name      = models.CharField(blank=True, null=True, max_length=255)
+    from_DateField(blank=True, null=True) = models.DateTimeField(blank=True, null=True)
+    to_DateField(blank=True, null=True)   = models.DateTimeField(blank=True, null=True)
+    key       = models.CharField(blank=True, null=True, max_length=2)
+    @property
+    def queries(self):
+            return ''
+
+
+class nsi_customs_region(NsiModel):
+    @property
+    def table_name(self):
+        return 'tk_nsi_customs_region'
+    @property
+    def title(self):
+        return ''
     code         = models.CharField(blank=True, null=True, max_length=8)
     name         = models.CharField(blank=True, null=True, max_length=50)
     region       = models.TextField(blank=True, null=True)
     region_okato = models.CharField(blank=True, null=True, max_length=255)
     order_number = models.CharField(blank=True, null=True, max_length=255)
-    order_date   = models.DateTimeField(blank=True, null=True)
+    order_DateField(blank=True, null=True)   = models.DateTimeField(blank=True, null=True)
+    from_DateField(blank=True, null=True)    = models.DateTimeField(blank=True, null=True)
+    to_DateField(blank=True, null=True)      = models.DateTimeField(blank=True, null=True)
     key          = models.CharField(blank=True, null=True, max_length=255)
+    @property
+    def queries(self):
+            return ''
 
-class customs_value_determination_kind(HashMixin, CommonInfo):
+
+class nsi_customs_value_determination_kind(NsiModel):
+    @property
+    def table_name(self):
+        return 'tk_nsi_customs_value_determination_kind'
+    @property
+    def title(self):
+        return ''
     code        = models.CharField(blank=True, null=True, max_length=1)
     description = models.CharField(blank=True, null=True, max_length=255)
+    from_DateField(blank=True, null=True)   = models.DateTimeField(blank=True, null=True)
+    to_DateField(blank=True, null=True)     = models.DateTimeField(blank=True, null=True)
     key         = models.CharField(blank=True, null=True, max_length=1)
+    @property
+    def queries(self):
+            return ''
 
-class deal_feature(HashMixin, CommonInfo):
-    code        = models.CharField(blank=True, null=True, max_length=2)
-    name        = models.CharField(blank=True, null=True, max_length=255)
-    key         = models.CharField(blank=True, null=True, max_length=2)
 
-class deal_nature(HashMixin, CommonInfo):
-    code        = models.CharField(blank=True, null=True, max_length=3)
-    name        = models.CharField(blank=True, null=True, max_length=250)
-    key         = models.CharField(blank=True, null=True, max_length=3)
+class nsi_deal_feature(NsiModel):
+    @property
+    def table_name(self):
+        return 'tk_nsi_deal_feature'
+    @property
+    def title(self):
+        return ''
+    code      = models.CharField(blank=True, null=True, max_length=2)
+    name      = models.CharField(blank=True, null=True, max_length=255)
+    from_DateField(blank=True, null=True) = models.DateTimeField(blank=True, null=True)
+    to_DateField(blank=True, null=True)   = models.DateTimeField(blank=True, null=True)
+    key       = models.CharField(blank=True, null=True, max_length=2)
+    @property
+    def queries(self):
+            return ''
 
-class delivery_terms(HashMixin, CommonInfo):
-    code_d      = models.TextField(blank=True, null=True)
-    code        = models.CharField(blank=True, null=True, max_length=3)
-    name        = models.CharField(blank=True, null=True, max_length=100)
-    key         = models.CharField(blank=True, null=True, max_length=3)
 
-class doc_reference(HashMixin, CommonInfo):
+class nsi_deal_nature(NsiModel):
+    @property
+    def table_name(self):
+        return 'tk_nsi_deal_nature'
+    @property
+    def title(self):
+        return ''
+    code      = models.CharField(blank=True, null=True, max_length=3)
+    name      = models.CharField(blank=True, null=True, max_length=250)
+    from_DateField(blank=True, null=True) = models.DateTimeField(blank=True, null=True)
+    to_DateField(blank=True, null=True)   = models.DateTimeField(blank=True, null=True)
+    key       = models.CharField(blank=True, null=True, max_length=3)
+    @property
+    def queries(self):
+            return ''
+
+
+class nsi_delivery_terms(NsiModel):
+    @property
+    def table_name(self):
+        return 'tk_nsi_delivery_terms'
+    @property
+    def title(self):
+        return ''
+    code_d    = models.TextField(blank=True, null=True)
+    code      = models.CharField(blank=True, null=True, max_length=3)
+    name      = models.CharField(blank=True, null=True, max_length=100)
+    from_DateField(blank=True, null=True) = models.DateTimeField(blank=True, null=True)
+    to_DateField(blank=True, null=True)   = models.DateTimeField(blank=True, null=True)
+    key       = models.CharField(blank=True, null=True, max_length=3)
+    @property
+    def queries(self):
+            return ''
+
+
+class nsi_doc_reference(NsiModel):
+    @property
+    def table_name(self):
+        return 'tk_nsi_doc_reference'
+    @property
+    def title(self):
+        return ''
+    code           = models.CharField(blank=True, null=True, max_length=5)
+    documentgroup  = models.CharField(blank=True, null=True, max_length=2)
+    description    = models.TextField(blank=True, null=True)
+    documentmodeid = models.CharField(blank=True, null=True, max_length=8)
+    documentname   = models.CharField(blank=True, null=True, max_length=255)
+    from_DateField(blank=True, null=True)      = models.DateTimeField(blank=True, null=True)
+    to_DateField(blank=True, null=True)        = models.DateTimeField(blank=True, null=True)
+    key            = models.TextField(blank=True, null=True)
+    @property
+    def queries(self):
+            return ''
+
+
+class nsi_doc_reference_ex(NsiModel):
+    @property
+    def table_name(self):
+        return 'tk_nsi_doc_reference_ex'
+    @property
+    def title(self):
+        return ''
     code           = models.CharField(blank=True, null=True, max_length=5)
     documentgroup  = models.CharField(blank=True, null=True, max_length=2)
     description    = models.TextField(blank=True, null=True)
     documentmodeid = models.CharField(blank=True, null=True, max_length=8)
     documentname   = models.CharField(blank=True, null=True, max_length=255)
     key            = models.TextField(blank=True, null=True)
+    from_DateField(blank=True, null=True)      = models.DateTimeField(blank=True, null=True)
+    to_DateField(blank=True, null=True)        = models.DateTimeField(blank=True, null=True)
+    end_DateField(blank=True, null=True)       = models.DateTimeField(blank=True, null=True)
+    @property
+    def queries(self):
+            return ''
 
-class doc_reference_ex(HashMixin, CommonInfo):
-    code           = models.CharField(blank=True, null=True, max_length=5)
-    documentgroup  = models.CharField(blank=True, null=True, max_length=2)
-    description    = models.TextField(blank=True, null=True)
-    documentmodeid = models.CharField(blank=True, null=True, max_length=8)
-    documentname   = models.CharField(blank=True, null=True, max_length=255)
-    key            = models.TextField(blank=True, null=True)
-    end_date       = models.DateTimeField(blank=True, null=True)
 
-class edi_container_type(HashMixin, CommonInfo):
-    code        = models.CharField(blank=True, null=True, max_length=255)
-    code_old    = models.CharField(blank=True, null=True, max_length=255)
-    length      = models.CharField(blank=True, null=True, max_length=255)
-    width       = models.CharField(blank=True, null=True, max_length=255)
-    name        = models.CharField(blank=True, null=True, max_length=255)
-    key         = models.CharField(blank=True, null=True, max_length=255)
-
-class edi_wagon_type(HashMixin, CommonInfo):
-    code        = models.CharField(blank=True, null=True, max_length=2)
-    description = models.CharField(blank=True, null=True, max_length=255)
-    abbr        = models.CharField(blank=True, null=True, max_length=10)
-    key         = models.CharField(blank=True, null=True, max_length=2)
-
-class edi_weight_definition_mode(HashMixin, CommonInfo):
-    code        = models.CharField(blank=True, null=True, max_length=2)
-    name        = models.CharField(blank=True, null=True, max_length=255)
-    key         = models.CharField(blank=True, null=True, max_length=2)
-
-class ensure_payment_code(HashMixin, CommonInfo):
-    code        = models.CharField(blank=True, null=True, max_length=2)
-    name        = models.CharField(blank=True, null=True, max_length=255)
-    key         = models.CharField(blank=True, null=True, max_length=2)
-
-class etsng(HashMixin, CommonInfo):
-    code        = models.CharField(blank=True, null=True, max_length=14)
-    parent      = models.IntegerField(blank=True, null=True)
-    description = models.TextField(blank=True, null=True)
-    iscode      = models.BooleanField(default=False)
-
-class forms_of_payment(HashMixin, CommonInfo):
-    code        = models.CharField(blank=True, null=True, max_length=2)
-    name        = models.CharField(blank=True, null=True, max_length=255)
-    key         = models.CharField(blank=True, null=True, max_length=2)
-
-class gng(HashMixin, CommonInfo):
-    code        = models.CharField(blank=True, null=True, max_length=14)
-    parent      = models.IntegerField(blank=True, null=True)
-    description = models.TextField(blank=True, null=True)
-    iscode      = models.BooleanField(default=False)
-
-class gng_etsng(HashMixin, CommonInfo):
-    gng_code          = models.CharField(blank=True, null=True, max_length=8)
-    gng_description   = models.TextField(blank=True, null=True)
-    etsng_code        = models.CharField(blank=True, null=True, max_length=6)
-    etsng_description = models.TextField(blank=True, null=True)
-
-class hazardous_cargo_code_imo(HashMixin, CommonInfo):
-    code        = models.CharField(blank=True, null=True, max_length=3)
-    name        = models.CharField(blank=True, null=True, max_length=255)
-    key         = models.CharField(blank=True, null=True, max_length=3)
-
-class hazardous_cargo_code_un(HashMixin, CommonInfo):
-    code                = models.CharField(blank=True, null=True, max_length=4)
-    name                = models.CharField(blank=True, null=True, max_length=255)
-    classification_type = models.CharField(blank=True, null=True, max_length=3)
-    classification_code = models.CharField(blank=True, null=True, max_length=10)
-    key                 = models.CharField(blank=True, null=True, max_length=4)
-
-class intellectual(HashMixin, CommonInfo):
+class nsi_intellectual(NsiModel):
+    @property
+    def table_name(self):
+        return 'tk_nsi_intellectual'
+    @property
+    def title(self):
+        return ''
     code               = models.CharField(blank=True, null=True, max_length=25)
     description        = models.CharField(blank=True, null=True, max_length=50)
     inn                = models.CharField(blank=True, null=True, max_length=12)
@@ -252,62 +304,166 @@ class intellectual(HashMixin, CommonInfo):
     company_address_en = models.CharField(blank=True, null=True, max_length=254)
     note               = models.CharField(blank=True, null=True, max_length=100)
     order_number       = models.CharField(blank=True, null=True, max_length=10)
-    order_date         = models.DateTimeField(blank=True, null=True)
+    order_DateField(blank=True, null=True)         = models.DateTimeField(blank=True, null=True)
     full_description   = models.TextField(blank=True, null=True)
     full_description_2 = models.TextField(blank=True, null=True)
+    to_DateField(blank=True, null=True)            = models.DateTimeField(blank=True, null=True)
     key                = models.CharField(blank=True, null=True, max_length=255)
+    @property
+    def queries(self):
+            return ''
 
-class intellectual_documents(HashMixin, CommonInfo):
+
+class nsi_intellectual_documents(NsiModel):
+    @property
+    def table_name(self):
+        return 'tk_nsi_intellectual_documents'
+    @property
+    def title(self):
+        return ''
     code          = models.CharField(blank=True, null=True, max_length=25)
     document      = models.CharField(blank=True, null=True, max_length=25)
-    document_date = models.DateTimeField(blank=True, null=True)
-    key           = models.CharField(blank=True, null=True, max_length=25)
+    document_DateField(blank=True, null=True) = models.DateTimeField(blank=True, null=True)
+    key           = models.CharField(blank=True, null=True, max_length=255)
+    @property
+    def queries(self):
+            return ''
 
-class intellectual_trade_marks(HashMixin, CommonInfo):
+
+class nsi_intellectual_ex(NsiModel):
+    @property
+    def table_name(self):
+        return 'tk_nsi_intellectual_ex'
+    @property
+    def title(self):
+        return ''
+    code                = models.CharField(blank=True, null=True, max_length=25)
+    description         = models.CharField(blank=True, null=True, max_length=50)
+    inn                 = models.CharField(blank=True, null=True, max_length=12)
+    kpp                 = models.CharField(blank=True, null=True, max_length=9)
+    company_name        = models.CharField(blank=True, null=True, max_length=254)
+    company_name_en     = models.CharField(blank=True, null=True, max_length=254)
+    company_address     = models.CharField(blank=True, null=True, max_length=254)
+    company_address_en  = models.CharField(blank=True, null=True, max_length=254)
+    note                = models.CharField(blank=True, null=True, max_length=100)
+    order_number        = models.CharField(blank=True, null=True, max_length=10)
+    order_DateField(blank=True, null=True)          = models.DateTimeField(blank=True, null=True)
+    full_description    = models.TextField(blank=True, null=True)
+    full_description_2  = models.TextField(blank=True, null=True)
+    key                 = models.TextField(blank=True, null=True)
+    picture_description = models.CharField(blank=True, null=True, max_length=255)
+    picture_file_name   = models.TextField(blank=True, null=True)
+    @property
+    def queries(self):
+            return ''
+
+
+class nsi_intellectual_trade_marks(NsiModel):
+    @property
+    def table_name(self):
+        return 'tk_nsi_intellectual_trade_marks'
+    @property
+    def title(self):
+        return ''
     code              = models.CharField(blank=True, null=True, max_length=255)
     description       = models.CharField(blank=True, null=True, max_length=255)
     picture_file_name = models.TextField(blank=True, null=True)
     key               = models.TextField(blank=True, null=True)
+    @property
+    def queries(self):
+            return ''
 
-class mnt(HashMixin, CommonInfo):
-    code        = models.CharField(blank=True, null=True, max_length=2)
-    name        = models.TextField(blank=True, null=True)
-    key         = models.CharField(blank=True, null=True, max_length=2)
 
-class movement_of_goods_features(HashMixin, CommonInfo):
-    code        = models.CharField(blank=True, null=True, max_length=3)
-    name        = models.TextField(blank=True, null=True)
-    key         = models.CharField(blank=True, null=True, max_length=3)
+class nsi_mnt(NsiModel):
+    @property
+    def table_name(self):
+        return 'tk_nsi_mnt'
+    @property
+    def title(self):
+        return ''
+    code      = models.CharField(blank=True, null=True, max_length=2)
+    name      = models.TextField(blank=True, null=True)
+    from_DateField(blank=True, null=True) = models.DateTimeField(blank=True, null=True)
+    to_DateField(blank=True, null=True)   = models.DateTimeField(blank=True, null=True)
+    key       = models.CharField(blank=True, null=True, max_length=2)
+    @property
+    def queries(self):
+            return ''
 
-class package(HashMixin, CommonInfo):
-    code        = models.CharField(blank=True, null=True, max_length=2)
-    name        = models.CharField(blank=True, null=True, max_length=255)
-    name_eng    = models.CharField(blank=True, null=True, max_length=255)
-    key         = models.CharField(blank=True, null=True, max_length=2)
 
-class package_type(HashMixin, CommonInfo):
-    code        = models.CharField(blank=True, null=True, max_length=1)
-    name        = models.CharField(blank=True, null=True, max_length=100)
-    key         = models.CharField(blank=True, null=True, max_length=1)
+class nsi_movement_of_goods_features(NsiModel):
+    @property
+    def table_name(self):
+        return 'tk_nsi_movement_of_goods_features'
+    @property
+    def title(self):
+        return ''
+    code      = models.CharField(blank=True, null=True, max_length=3)
+    name      = models.TextField(blank=True, null=True)
+    from_DateField(blank=True, null=True) = models.DateTimeField(blank=True, null=True)
+    to_DateField(blank=True, null=True)   = models.DateTimeField(blank=True, null=True)
+    key       = models.CharField(blank=True, null=True, max_length=3)
+    @property
+    def queries(self):
+            return ''
 
-class payment_code(HashMixin, CommonInfo):
-    code        = models.CharField(blank=True, null=True, max_length=2)
-    name        = models.CharField(blank=True, null=True, max_length=255)
-    key         = models.CharField(blank=True, null=True, max_length=2)
 
-class payment_terms(HashMixin, CommonInfo):
-    code        = models.CharField(blank=True, null=True, max_length=2)
-    description = models.CharField(blank=True, null=True, max_length=50)
-    month_count = models.CharField(blank=True, null=True, max_length=4)
-    key         = models.CharField(blank=True, null=True, max_length=2)
+class nsi_package(NsiModel):
+    @property
+    def table_name(self):
+        return 'tk_nsi_package'
+    @property
+    def title(self):
+        return ''
+    code      = models.CharField(blank=True, null=True, max_length=2)
+    name      = models.CharField(blank=True, null=True, max_length=255)
+    name_eng  = models.CharField(blank=True, null=True, max_length=255)
+    from_DateField(blank=True, null=True) = models.DateTimeField(blank=True, null=True)
+    to_DateField(blank=True, null=True)   = models.DateTimeField(blank=True, null=True)
+    key       = models.CharField(blank=True, null=True, max_length=2)
+    @property
+    def queries(self):
+            return ''
 
-class payment_way_code(HashMixin, CommonInfo):
+
+class nsi_payment_code(NsiModel):
+    @property
+    def table_name(self):
+        return 'tk_nsi_payment_code'
+    @property
+    def title(self):
+        return ''
+    code   = models.CharField(blank=True, null=True, max_length=2)
+    name   = models.CharField(blank=True, null=True, max_length=255)
+    key    = models.CharField(blank=True, null=True, max_length=255)
+    @property
+    def queries(self):
+            return ''
+
+
+class nsi_payment_way_code(NsiModel):
+    @property
+    def table_name(self):
+        return 'tk_nsi_payment_way_code'
+    @property
+    def title(self):
+        return ''
     country_ab2 = models.CharField(blank=True, null=True, max_length=2)
     code        = models.CharField(blank=True, null=True, max_length=2)
     name        = models.CharField(blank=True, null=True, max_length=255)
     key         = models.CharField(blank=True, null=True, max_length=255)
+    @property
+    def queries(self):
+            return ''
 
-class personal_document_kind(HashMixin, CommonInfo):
+
+class nsi_personal_document_kind(NsiModel):
+    @property
+    def table_name(self):
+        return 'tk_nsi_personal_document_kind'
+    @property
+    def title(self):
+        return ''
     code        = models.CharField(blank=True, null=True, max_length=2)
     name        = models.CharField(blank=True, null=True, max_length=75)
     abbr        = models.CharField(blank=True, null=True, max_length=6)
@@ -315,21 +471,38 @@ class personal_document_kind(HashMixin, CommonInfo):
     number_mask = models.CharField(blank=True, null=True, max_length=25)
     comment     = models.CharField(blank=True, null=True, max_length=120)
     key         = models.CharField(blank=True, null=True, max_length=2)
+    @property
+    def queries(self):
+            return ''
 
-class personal_document_kind_155(HashMixin, CommonInfo):
+
+class nsi_personal_document_kind_155(NsiModel):
+    @property
+    def table_name(self):
+        return 'tk_nsi_personal_document_kind_155'
+    @property
+    def title(self):
+        return ''
     country_code     = models.CharField(blank=True, null=True, max_length=2)
     doc_type_code    = models.CharField(blank=True, null=True, max_length=2)
     code             = models.CharField(blank=True, null=True, max_length=7)
     name             = models.CharField(blank=True, null=True, max_length=255)
     citizenship_mark = models.CharField(blank=True, null=True, max_length=10)
+    from_DateField(blank=True, null=True)        = models.DateTimeField(blank=True, null=True)
+    to_DateField(blank=True, null=True)          = models.DateTimeField(blank=True, null=True)
     key              = models.CharField(blank=True, null=True, max_length=7)
+    @property
+    def queries(self):
+            return ''
 
-class pi_usage(HashMixin, CommonInfo):
-    code        = models.CharField(blank=True, null=True, max_length=2)
-    description = models.TextField(blank=True, null=True)
-    key         = models.CharField(blank=True, null=True, max_length=2)
 
-class preferences_kind(HashMixin, CommonInfo):
+class nsi_preferences_kind(NsiModel):
+    @property
+    def table_name(self):
+        return 'tk_nsi_preferences_kind'
+    @property
+    def title(self):
+        return ''
     code                       = models.CharField(blank=True, null=True, max_length=2)
     apply_to                   = models.CharField(blank=True, null=True, max_length=1)
     name                       = models.TextField(blank=True, null=True)
@@ -339,26 +512,22 @@ class preferences_kind(HashMixin, CommonInfo):
     use_in_am                  = models.FloatField(blank=True, null=True)
     procedures_mask            = models.CharField(blank=True, null=True, max_length=255)
     procedures_mask_order      = models.CharField(blank=True, null=True, max_length=255)
-    procedures_mask_order_date = models.DateTimeField(blank=True, null=True)
+    procedures_mask_order_DateField(blank=True, null=True) = models.DateTimeField(blank=True, null=True)
+    from_DateField(blank=True, null=True)                  = models.DateTimeField(blank=True, null=True)
+    to_DateField(blank=True, null=True)                    = models.DateTimeField(blank=True, null=True)
     key                        = models.CharField(blank=True, null=True, max_length=255)
+    @property
+    def queries(self):
+            return ''
 
-class rw_countries(HashMixin, CommonInfo):
-    rw_country_code     = models.CharField(blank=True, null=True, max_length=255)
-    name                = models.CharField(blank=True, null=True, max_length=50)
-    abbr                = models.CharField(blank=True, null=True, max_length=10)
-    country_code        = models.CharField(blank=True, null=True, max_length=255)
-    administration_name = models.CharField(blank=True, null=True, max_length=255)
-    abc2                = models.CharField(blank=True, null=True, max_length=2)
-    abc3                = models.CharField(blank=True, null=True, max_length=3)
-    key                 = models.CharField(blank=True, null=True, max_length=255)
 
-class rw_roads(HashMixin, CommonInfo):
-    road_code   = models.CharField(blank=True, null=True, max_length=255)
-    name        = models.CharField(blank=True, null=True, max_length=50)
-    abbr        = models.CharField(blank=True, null=True, max_length=10)
-    key         = models.CharField(blank=True, null=True, max_length=255)
-
-class rw_stations(HashMixin, CommonInfo):
+class nsi_rw_stations(NsiModel):
+    @property
+    def table_name(self):
+        return 'tk_nsi_rw_stations'
+    @property
+    def title(self):
+        return ''
     code5        = models.CharField(blank=True, null=True, max_length=10)
     code         = models.CharField(blank=True, null=True, max_length=255)
     name         = models.CharField(blank=True, null=True, max_length=100)
@@ -366,42 +535,60 @@ class rw_stations(HashMixin, CommonInfo):
     abbr         = models.CharField(blank=True, null=True, max_length=255)
     road_code    = models.CharField(blank=True, null=True, max_length=3)
     country_code = models.CharField(blank=True, null=True, max_length=255)
+    from_DateField(blank=True, null=True)    = models.DateTimeField(blank=True, null=True)
+    to_DateField(blank=True, null=True)      = models.DateTimeField(blank=True, null=True)
     key          = models.CharField(blank=True, null=True, max_length=255)
+    @property
+    def queries(self):
+            return ''
 
-class rw_stations_customs(HashMixin, CommonInfo):
-    code5        = models.CharField(blank=True, null=True, max_length=10)
-    code         = models.CharField(blank=True, null=True, max_length=255)
-    name         = models.CharField(blank=True, null=True, max_length=100)
-    customs_code = models.CharField(blank=True, null=True, max_length=8)
-    curtoms_name = models.CharField(blank=True, null=True, max_length=50)
-    city         = models.CharField(blank=True, null=True, max_length=30)
-    address      = models.CharField(blank=True, null=True, max_length=255)
-    key          = models.CharField(blank=True, null=True, max_length=255)
 
-class sea_ports(HashMixin, CommonInfo):
-    country     = models.TextField(blank=True, null=True)
-    code        = models.TextField(blank=True, null=True)
-    name        = models.CharField(blank=True, null=True, max_length=255)
-    coordinates = models.CharField(blank=True, null=True, max_length=255)
+class nsi_stations_foreign_links(NsiModel):
+    @property
+    def table_name(self):
+        return 'tk_nsi_stations_foreign_links'
+    @property
+    def title(self):
+        return ''
+    code1    = models.CharField(blank=True, null=True, max_length=6)
+    name1    = models.CharField(blank=True, null=True, max_length=100)
+    country1 = models.CharField(blank=True, null=True, max_length=2)
+    code2    = models.CharField(blank=True, null=True, max_length=6)
+    name2    = models.CharField(blank=True, null=True, max_length=100)
+    country2 = models.CharField(blank=True, null=True, max_length=2)
+    key      = models.CharField(blank=True, null=True, max_length=255)
+    @property
+    def queries(self):
+            return ''
 
-class stations_foreign_links(HashMixin, CommonInfo):
-    code1       = models.CharField(blank=True, null=True, max_length=6)
-    name1       = models.CharField(blank=True, null=True, max_length=100)
-    country1    = models.CharField(blank=True, null=True, max_length=2)
-    code2       = models.CharField(blank=True, null=True, max_length=6)
-    name2       = models.CharField(blank=True, null=True, max_length=100)
-    country2    = models.CharField(blank=True, null=True, max_length=2)
-    key         = models.CharField(blank=True, null=True, max_length=255)
 
-class tnved(HashMixin, CommonInfo):
+class nsi_tnved(NsiModel):
+    @property
+    def table_name(self):
+        return 'tk_nsi_tnved'
+    @property
+    def title(self):
+        return ''
     code              = models.CharField(blank=True, null=True, max_length=14)
     parent            = models.IntegerField(blank=True, null=True)
     description       = models.TextField(blank=True, null=True)
     iscode            = models.BooleanField(default=False)
+    from_DateField(blank=True, null=True)         = models.date
+    to_DateField(blank=True, null=True)           = models.date
     short_description = models.TextField(blank=True, null=True)
     unit_code         = models.CharField(blank=True, null=True, max_length=255)
+    @property
+    def queries(self):
+            return ''
 
-class tnved_14(HashMixin, CommonInfo):
+
+class nsi_tnved_14(NsiModel):
+    @property
+    def table_name(self):
+        return 'tk_nsi_tnved_14'
+    @property
+    def title(self):
+        return ''
     code      = models.CharField(blank=True, null=True, max_length=10)
     code11    = models.CharField(blank=True, null=True, max_length=1)
     code12    = models.CharField(blank=True, null=True, max_length=1)
@@ -411,40 +598,77 @@ class tnved_14(HashMixin, CommonInfo):
     name12    = models.CharField(blank=True, null=True, max_length=255)
     name13    = models.CharField(blank=True, null=True, max_length=255)
     name14    = models.CharField(blank=True, null=True, max_length=255)
+    from_DateField(blank=True, null=True) = models.DateTimeField(blank=True, null=True)
+    to_DateField(blank=True, null=True)   = models.DateTimeField(blank=True, null=True)
+    @property
+    def queries(self):
+            return ''
 
-class transit_measures_of_ensuring(HashMixin, CommonInfo):
-    code        = models.CharField(blank=True, null=True, max_length=2)
-    description = models.TextField(blank=True, null=True)
-    key         = models.CharField(blank=True, null=True, max_length=2)
 
-class transport_kind(HashMixin, CommonInfo):
+class nsi_transport_kind(NsiModel):
+    @property
+    def table_name(self):
+        return 'tk_nsi_transport_kind'
+    @property
+    def title(self):
+        return ''
     code        = models.CharField(blank=True, null=True, max_length=2)
     description = models.CharField(blank=True, null=True, max_length=255)
+    from_DateField(blank=True, null=True)   = models.DateTimeField(blank=True, null=True)
+    to_DateField(blank=True, null=True)     = models.DateTimeField(blank=True, null=True)
     key         = models.CharField(blank=True, null=True, max_length=2)
+    @property
+    def queries(self):
+            return ''
 
-class type_of_vehicles(HashMixin, CommonInfo):
+
+class nsi_type_of_vehicles(NsiModel):
+    @property
+    def table_name(self):
+        return 'tk_nsi_type_of_vehicles'
+    @property
+    def title(self):
+        return ''
     code        = models.CharField(blank=True, null=True, max_length=3)
     description = models.CharField(blank=True, null=True, max_length=130)
     comment     = models.CharField(blank=True, null=True, max_length=255)
+    from_DateField(blank=True, null=True)   = models.DateTimeField(blank=True, null=True)
+    to_DateField(blank=True, null=True)     = models.DateTimeField(blank=True, null=True)
     key         = models.CharField(blank=True, null=True, max_length=3)
+    @property
+    def queries(self):
+            return ''
 
-class unit(HashMixin, CommonInfo):
+
+class nsi_unit(NsiModel):
+    @property
+    def table_name(self):
+        return 'tk_nsi_unit'
+    @property
+    def title(self):
+        return ''
     code        = models.CharField(blank=True, null=True, max_length=3)
     abbr        = models.CharField(blank=True, null=True, max_length=100)
     description = models.CharField(blank=True, null=True, max_length=255)
+    from_DateField(blank=True, null=True)   = models.DateTimeField(blank=True, null=True)
+    to_DateField(blank=True, null=True)     = models.DateTimeField(blank=True, null=True)
     key         = models.CharField(blank=True, null=True, max_length=3)
+    @property
+    def queries(self):
+            return ''
 
-class vmtp_country(HashMixin, CommonInfo):
-    vmtp_code    = models.CharField(blank=True, null=True, max_length=3)
-    country_code = models.CharField(blank=True, null=True, max_length=3)
-    name         = models.CharField(blank=True, null=True, max_length=255)
-    key          = models.CharField(blank=True, null=True, max_length=3)
 
-class warehouse_customs(HashMixin, CommonInfo):
+class nsi_warehouse_customs(NsiModel):
+    @property
+    def table_name(self):
+        return 'tk_nsi_warehouse_customs'
+    @property
+    def title(self):
+        return ''
     country_ab2    = models.CharField(blank=True, null=True, max_length=255)
     customs_code   = models.CharField(blank=True, null=True, max_length=255)
     license_number = models.CharField(blank=True, null=True, max_length=255)
-    license_date   = models.DateTimeField(blank=True, null=True)
+    license_DateField(blank=True, null=True)   = models.DateTimeField(blank=True, null=True)
     owner          = models.CharField(blank=True, null=True, max_length=255)
     offise_address = models.TextField(blank=True, null=True)
     address        = models.TextField(blank=True, null=True)
@@ -456,13 +680,25 @@ class warehouse_customs(HashMixin, CommonInfo):
     transport_kind = models.TextField(blank=True, null=True)
     is_exciz       = models.CharField(blank=True, null=True, max_length=255)
     warehouse_type = models.TextField(blank=True, null=True)
+    from_DateField(blank=True, null=True)      = models.DateTimeField(blank=True, null=True)
+    to_DateField(blank=True, null=True)        = models.DateTimeField(blank=True, null=True)
     key            = models.CharField(blank=True, null=True, max_length=255)
+    @property
+    def queries(self):
+            return ''
 
-class warehouse_temporary(HashMixin, CommonInfo):
+
+class nsi_warehouse_temporary(NsiModel):
+    @property
+    def table_name(self):
+        return 'tk_nsi_warehouse_temporary'
+    @property
+    def title(self):
+        return ''
     country_ab2    = models.CharField(blank=True, null=True, max_length=255)
     customs_code   = models.CharField(blank=True, null=True, max_length=255)
     license_number = models.CharField(blank=True, null=True, max_length=255)
-    license_date   = models.DateTimeField(blank=True, null=True)
+    license_DateField(blank=True, null=True)   = models.DateTimeField(blank=True, null=True)
     owner          = models.CharField(blank=True, null=True, max_length=255)
     offise_address = models.TextField(blank=True, null=True)
     address        = models.TextField(blank=True, null=True)
@@ -474,4 +710,98 @@ class warehouse_temporary(HashMixin, CommonInfo):
     transport_kind = models.TextField(blank=True, null=True)
     is_exciz       = models.CharField(blank=True, null=True, max_length=255)
     warehouse_type = models.TextField(blank=True, null=True)
+    from_DateField(blank=True, null=True)      = models.DateTimeField(blank=True, null=True)
+    to_DateField(blank=True, null=True)        = models.DateTimeField(blank=True, null=True)
     key            = models.CharField(blank=True, null=True, max_length=255)
+    @property
+    def queries(self):
+            return ''
+
+
+class nsi_economic_operator(NsiModel):
+    @property
+    def table_name(self):
+        return 'tk_nsi_economic_operator'
+    @property
+    def title(self):
+        return ''
+    country_ab2    = models.CharField(blank=True, null=True, max_length=2)
+    license_number = models.CharField(blank=True, null=True, max_length=25)
+    pr_per         = models.CharField(blank=True, null=True, max_length=1)
+    n_blank        = models.CharField(blank=True, null=True, max_length=10)
+    from_DateField(blank=True, null=True)      = models.DateTimeField(blank=True, null=True)
+    to_DateField(blank=True, null=True)        = models.DateTimeField(blank=True, null=True)
+    owner          = models.CharField(blank=True, null=True, max_length=255)
+    opf_vl         = models.CharField(blank=True, null=True, max_length=5)
+    post           = models.CharField(blank=True, null=True, max_length=9)
+    region         = models.CharField(blank=True, null=True, max_length=50)
+    city           = models.CharField(blank=True, null=True, max_length=35)
+    street         = models.CharField(blank=True, null=True, max_length=50)
+    phone          = models.CharField(blank=True, null=True, max_length=100)
+    email          = models.CharField(blank=True, null=True, max_length=100)
+    website        = models.CharField(blank=True, null=True, max_length=100)
+    ogrn           = models.CharField(blank=True, null=True, max_length=15)
+    inn            = models.CharField(blank=True, null=True, max_length=20)
+    okpo           = models.CharField(blank=True, null=True, max_length=10)
+    osp            = models.CharField(blank=True, null=True, max_length=1)
+    change_DateField(blank=True, null=True)    = models.DateTimeField(blank=True, null=True)
+    doc_number_beg = models.CharField(blank=True, null=True, max_length=20)
+    doc_DateField(blank=True, null=True)_beg   = models.DateTimeField(blank=True, null=True)
+    doc_number_end = models.CharField(blank=True, null=True, max_length=20)
+    doc_DateField(blank=True, null=True)_end   = models.DateTimeField(blank=True, null=True)
+    doc_number_sus = models.CharField(blank=True, null=True, max_length=20)
+    doc_DateField(blank=True, null=True)_sus   = models.DateTimeField(blank=True, null=True)
+    key            = models.TextField(blank=True, null=True)
+    @property
+    def queries(self):
+            return ''
+
+
+class nsi_dutyfree(NsiModel):
+    @property
+    def table_name(self):
+        return 'tk_nsi_dutyfree'
+    @property
+    def title(self):
+        return ''
+    customs_code   = models.CharField(blank=True, null=True, max_length=255)
+    name           = models.CharField(blank=True, null=True, max_length=255)
+    nsved          = models.CharField(blank=True, null=True, max_length=255)
+    license_DateField(blank=True, null=True)   = models.CharField(blank=True, null=True, max_length=255)
+    owner          = models.CharField(blank=True, null=True, max_length=255)
+    offise_address = models.CharField(blank=True, null=True, max_length=255)
+    inn            = models.CharField(blank=True, null=True, max_length=255)
+    address        = models.CharField(blank=True, null=True, max_length=255)
+    area           = models.CharField(blank=True, null=True, max_length=255)
+    kategor        = models.CharField(blank=True, null=True, max_length=255)
+    obesp          = models.CharField(blank=True, null=True, max_length=255)
+    addinfo        = models.CharField(blank=True, null=True, max_length=255)
+    key            = models.TextField(blank=True, null=True)
+    @property
+    def queries(self):
+            return ''
+
+
+class nsi_warehouse_free(NsiModel):
+    @property
+    def table_name(self):
+        return 'tk_nsi_warehouse_free'
+    @property
+    def title(self):
+        return ''
+    country_ab2      = models.CharField(blank=True, null=True, max_length=255)
+    doc_number       = models.CharField(blank=True, null=True, max_length=255)
+    doc_DateField(blank=True, null=True)         = models.DateTimeField(blank=True, null=True)
+    name             = models.CharField(blank=True, null=True, max_length=255)
+    address          = models.TextField(blank=True, null=True)
+    inn              = models.CharField(blank=True, null=True, max_length=255)
+    area             = models.CharField(blank=True, null=True, max_length=255)
+    customsauthority = models.CharField(blank=True, null=True, max_length=255)
+    kindofactivity   = models.CharField(blank=True, null=True, max_length=255)
+    addinfo          = models.CharField(blank=True, null=True, max_length=255)
+    active           = models.CharField(blank=True, null=True, max_length=255)
+    key              = models.TextField(blank=True, null=True)
+    @property
+    def queries(self):
+            return ''
+

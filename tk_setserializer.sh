@@ -1,6 +1,6 @@
 #! /bin/bash
 #создание файла сериализации модулей (erializers.py) по input_struct.txt
-sed -f nsi_serializer.sed input_nsi_struct.txt | 
+sed -f tk_serializer.sed input_nsi_struct.txt | 
 sed /^$/d | 
 sed 's/^class /\n\nclass /' | 
 sed "s/fields = (/fields = (\n            'id',(ggg)/" | 

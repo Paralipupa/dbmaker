@@ -1,1 +1,1 @@
-s/\(.*\)/ALTER TABLE \1  ADD COLUMN IF NOT EXISTS from_date timestamp DEFAULT NULL;/
+s/\(.*\)/ALTER TABLE \1ADD COLUMN IF NOT EXISTS from_date timestamp DEFAULT NULL;/
